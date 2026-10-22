@@ -1,643 +1,785 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { Icon, Logo, TravelPhoto } from "./components/travel-ui";
+import {
+  categories,
+  experiences,
+  vehicles,
+  type Category,
+  type Experience,
+} from "@/lib/travel-data";
 import "./style.css";
 
-const booking = "https://wa.me/212691972818";
-const photo = (id: string, width = 1000) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=85`;
-const services = [
-  {
-    name: "Coupe & Brushing",
-    label: "Le mouvement parfait",
-    description:
-      "Une coupe pensée pour votre visage, un mouvement qui révèle votre personnalité. Le plaisir de vous sentir pleinement vous-même.",
-    price: "80",
-    image: "photo-1560869713-7d0a29430803",
-    detail: "Diagnostic personnalisé · Coupe · Coiffage",
-  },
-  {
-    name: "Coloration",
-    label: "La lumière vous va bien",
-    description:
-      "Des reflets subtils aux transformations audacieuses, nous créons la nuance qui illumine votre visage et raconte votre style.",
-    price: "150",
-    image: "photo-1522337360788-8b13dee7a37e",
-    detail: "Conseil couleur · Coloration · Finition",
-  },
-  {
-    name: "Soins capillaires",
-    label: "Une pause, un renouveau",
-    description:
-      "Un rituel généreux pour nourrir vos cheveux et apaiser votre esprit. Retrouvez douceur, éclat et légèreté, tout simplement.",
-    price: "100",
-    image: "photo-1519699047748-de8e457a634e",
-    detail: "Diagnostic · Soin profond · Massage",
-  },
-];
-const gallery = [
-  {
-    image: "photo-1521590832167-7bcbfaa6381f",
-    title: "Un lieu pour soi",
-    category: "LE SALON",
-  },
-  {
-    image: "photo-1522337360788-8b13dee7a37e",
-    title: "L’art du détail",
-    category: "NOS INSPIRATIONS",
-  },
-  {
-    image: "photo-1487412720507-e7ab37603c6f",
-    title: "Votre éclat naturel",
-    category: "LA BEAUTÉ",
-  },
-];
-function Arrow() {
-  return (
-    <span aria-hidden="true">
-      <svg
-        className="arrow-icon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-      >
-        <path d="M5 19 19 5M5 5h14v14" />
-      </svg>
-    </span>
-  );
+type Journey = {
+  category: Category;
+  pickup: string;
+  destination: string;
+  date: string;
+  passengers: string;
+  experience: string;
+};
+const initialJourney: Journey = {
+  category: "transfers",
+  pickup: "",
+  destination: "",
+  date: "",
+  passengers: "1",
+  experience: "Private transfer",
+};
+type Modal =
+  | { type: "booking"; journey: Journey }
+  | { type: "experience"; item: Experience }
+  | { type: "fleet" }
+  | { type: "about" }
+  | { type: "contact" }
+  | null;
+function localDate() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 }
+
 export default function Home() {
-  const [active, setActive] = useState(0);
-  const [menu, setMenu] = useState(false);
-  const [lightbox, setLightbox] = useState<number | null>(null);
+  const [category, setCategory] = useState<Category>("transfers");
+  const [journey, setJourney] = useState(initialJourney);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [filter, setFilter] = useState("all");
+  const [expanded, setExpanded] = useState(false);
+  const [modal, setModal] = useState<Modal>(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [reference, setReference] = useState("");
   const dialog = useRef<HTMLDialogElement>(null);
+  const form = useRef<HTMLFormElement>(null);
   useEffect(() => {
-    document.querySelectorAll("img").forEach((image) => {
-      if (image.complete && image.naturalWidth === 0)
-        image.src = "/images/salon.png";
-    });
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        }),
-      { threshold: 0.12 },
-    );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-  useEffect(() => {
-    const el = dialog.current;
-    if (lightbox !== null) {
-      el?.showModal();
+    const current = dialog.current;
+    if (modal) {
+      current?.showModal();
       document.body.style.overflow = "hidden";
     } else {
-      el?.close();
+      current?.close();
       document.body.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
     };
-  }, [lightbox]);
-  const service = services[active];
+  }, [modal]);
+  function openModal(value: Modal) {
+    setError("");
+    setReference("");
+    setModal(value);
+    setMobileMenu(false);
+  }
+  function selectCategory(value: Category) {
+    setCategory(value);
+    setJourney((previous) => ({ ...previous, category: value }));
+  }
+  function browse(type: Category) {
+    setMobileMenu(false);
+    if (type === "transfers") {
+      selectCategory(type);
+      document.getElementById("booking")?.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+        block: "center",
+      });
+      form.current
+        ?.querySelector<HTMLInputElement>("input")
+        ?.focus({ preventScroll: true });
+    } else if (type === "fleet") openModal({ type: "fleet" });
+    else {
+      setFilter(type);
+      setExpanded(true);
+      document
+        .getElementById("experiences")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+  function book(experience = "Private transfer", type: Category = "transfers") {
+    openModal({
+      type: "booking",
+      journey: { ...journey, category: type, experience },
+    });
+  }
+  function search(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const selected = categories.find((item) => item.id === category)!;
+    openModal({
+      type: "booking",
+      journey: {
+        ...journey,
+        category,
+        experience:
+          category === "transfers"
+            ? "Private transfer"
+            : `${selected.label} enquiry`,
+      },
+    });
+  }
+  async function submitReservation(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (sending || modal?.type !== "booking") return;
+    const data = new FormData(event.currentTarget);
+    setSending(true);
+    setError("");
+    try {
+      const response = await fetch("/api/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...modal.journey,
+          ...Object.fromEntries(data.entries()),
+        }),
+      });
+      const result = await response.json();
+      if (!response.ok)
+        throw new Error(
+          result.error || "Your request could not be saved. Please try again.",
+        );
+      setReference(result.reference);
+    } catch (cause) {
+      setError(
+        cause instanceof Error
+          ? cause.message
+          : "Please check your connection and try again.",
+      );
+    } finally {
+      setSending(false);
+    }
+  }
+  const displayed = experiences
+    .filter((item) => filter === "all" || item.type === filter)
+    .slice(0, expanded ? 6 : 4);
   return (
     <main>
-      <a className="skip-link" href="#accueil">
-        Aller au contenu
+      <a className="skip-link" href="#services">
+        Skip to content
       </a>
-      <div className="topline">
-        UN MOMENT POUR VOUS. UNE BEAUTÉ QUI VOUS RESSEMBLE.{" "}
-        <span>Sur rendez-vous uniquement</span>
-      </div>
-      <header className="navbar">
-        <a
-          className="brand"
-          href="#accueil"
-          aria-label="Fatima Ezzahra — accueil"
-        >
-          <span className="brand-mark">fe.</span>
-          <span>
-            FATIMA EZZAHRA<small>L’ATELIER DE BEAUTÉ</small>
-          </span>
-        </a>
-        <nav
-          className={menu ? "nav-links open" : "nav-links"}
-          aria-label="Navigation principale"
-        >
-          {[
-            ["Le salon", "apropos"],
-            ["Nos expertises", "services"],
-            ["L’inspiration", "galerie"],
-          ].map(([label, id]) => (
-            <a key={id} href={`#${id}`} onClick={() => setMenu(false)}>
-              {label}
+      <header className="site-header">
+        <div className="header-inner">
+          <Logo />
+          <nav
+            className={`navigation ${mobileMenu ? "is-open" : ""}`}
+            aria-label="Main navigation"
+          >
+            <a
+              className="active"
+              href="#home"
+              onClick={() => setMobileMenu(false)}
+            >
+              Home
             </a>
-          ))}
-        </nav>
-        <a className="nav-cta" href={booking} target="_blank" rel="noreferrer">
-          Prendre rendez-vous <Arrow />
-        </a>
-        <button
-          className="menu-toggle"
-          aria-label={menu ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={menu}
-          onClick={() => setMenu(!menu)}
-        >
-          {menu ? "✕" : "☰"}
-        </button>
+            <button onClick={() => browse("transfers")}>Transfers</button>
+            <button onClick={() => browse("tours")}>Tours</button>
+            <button onClick={() => browse("excursions")}>Excursions</button>
+            <button onClick={() => browse("fleet")}>Fleet</button>
+            <button onClick={() => openModal({ type: "about" })}>About</button>
+            <button onClick={() => openModal({ type: "contact" })}>
+              Contact
+            </button>
+          </nav>
+          <button className="button green header-book" onClick={() => book()}>
+            Book Now <Icon name="arrow" />
+          </button>
+          <button
+            className="menu-toggle"
+            onClick={() => setMobileMenu(!mobileMenu)}
+            aria-label={mobileMenu ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenu}
+          >
+            <Icon name={mobileMenu ? "close" : "menu"} />
+          </button>
+        </div>
       </header>
-      <section className="hero" id="accueil">
-        <div className="hero-copy">
-          <p className="eyebrow">
-            <span className="little-line" /> LA BEAUTÉ, EN TOUTE SINGULARITÉ
-          </p>
+      <section className="hero" id="home">
+        <div className="hero-backdrop" />
+        <div className="hero-shade" />
+        <div className="hero-content">
+          <p className="eyebrow light">TRAVEL · EXPLORE · EXPERIENCE</p>
           <h1>
-            Un peu de vous.
+            Discover
             <br />
-            Un souffle
+            Extraordinary
             <br />
-            d’<em>exception.</em>
-            <span className="hero-star" aria-hidden="true">
-              <svg
-                className="flower-icon"
-                viewBox="0 0 100 100"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="7"
-                strokeLinecap="round"
-              >
-                <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-              </svg>
-            </span>
+            Journeys
           </h1>
           <p className="hero-description">
-            Bien plus qu’un rendez-vous beauté.
-            <br />
-            Une parenthèse pour ralentir, vous révéler
-            <br />
-            et simplement, vous sentir bien.
+            Transfers, Tours, Excursions and more —<br />
+            your next adventure starts here.
           </p>
           <a
-            className="button dark"
-            href={booking}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Votre moment commence ici <Arrow />
-          </a>
-          <a className="discover" href="#services">
-            <span>↓</span> DÉCOUVRIR NOS EXPERTISES
-          </a>
-        </div>
-        <div className="hero-art">
-          <div className="hero-photo image-surface">
-            <img
-              onError={(event) => {
-                if (!event.currentTarget.src.endsWith("/images/salon.png"))
-                  event.currentTarget.src = "/images/salon.png";
-              }}
-              src="/images/salon.png"
-              alt="Un salon de coiffure lumineux et chaleureux"
-              fetchPriority="high"
-            />
-            <span className="photo-caption">L’ART DE PRENDRE SOIN DE VOUS</span>
-          </div>
-          <div className="floating-note">
-            <span>La beauté commence</span>
-            <em>quand on est soi.</em>
-            <small>LE MANIFESTE DU SALON</small>
-          </div>
-          <span className="vertical-label">
-            FATIMA EZZAHRA — BEAUTY ATELIER
-          </span>
-          <div className="hero-number">
-            01<span>/ UN NOUVEAU REGARD</span>
-          </div>
-        </div>
-      </section>
-      <div className="marquee" aria-label="Coupe, couleur, soin et confiance">
-        <div aria-hidden="true">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i}>
-              Votre beauté{" "}
-              <i>
-                <svg
-                  className="flower-icon"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="7"
-                  strokeLinecap="round"
-                >
-                  <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-                </svg>
-              </i>{" "}
-              Notre signature{" "}
-              <i>
-                <svg
-                  className="flower-icon"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="7"
-                  strokeLinecap="round"
-                >
-                  <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-                </svg>
-              </i>{" "}
-              Votre instant{" "}
-              <i>
-                <svg
-                  className="flower-icon"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="7"
-                  strokeLinecap="round"
-                >
-                  <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-                </svg>
-              </i>
-            </span>
-          ))}
-        </div>
-      </div>
-      <section className="intro section-pad" id="apropos">
-        <div className="intro-side reveal">
-          <p className="eyebrow">01 / NOTRE PHILOSOPHIE</p>
-          <div className="line-flower" aria-hidden="true">
-            <svg
-              className="flower-icon"
-              viewBox="0 0 100 100"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="7"
-              strokeLinecap="round"
-            >
-              <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-            </svg>
-          </div>
-          <span>
-            DE L’ATTENTION.
-            <br />
-            DU TALENT. DU CŒUR.
-          </span>
-        </div>
-        <div className="intro-content reveal">
-          <h2>
-            Il y a des lieux où l’on se sent
-            <br />
-            bien. Et des mains qui font
-            <br />
-            <em>toute la différence.</em>
-          </h2>
-          <div className="intro-bottom">
-            <p>
-              Bienvenue chez Fatima Ezzahra. Un atelier de beauté où chaque
-              détail compte, où l’on prend le temps de vous écouter, et où votre
-              singularité nous inspire.
-            </p>
-            <a className="text-link" href="#services">
-              Entrez dans notre univers <Arrow />
-            </a>
-          </div>
-        </div>
-      </section>
-      <section className="services section-pad" id="services">
-        <div className="section-heading reveal">
-          <div>
-            <p className="eyebrow">02 / NOS EXPERTISES</p>
-            <h2>
-              Vos envies.
-              <br />
-              <em>Notre savoir-faire.</em>
-            </h2>
-          </div>
-          <p>
-            Un geste précis. Une attention sincère.
-            <br />
-            Et ce petit quelque chose qui change tout.
-          </p>
-        </div>
-        <div className="service-layout reveal">
-          <div
-            className="service-list"
-            role="tablist"
-            aria-label="Nos prestations"
-          >
-            {services.map((item, index) => (
-              <button
-                key={item.name}
-                role="tab"
-                id={`service-tab-${index}`}
-                aria-controls="service-panel"
-                aria-selected={active === index}
-                className={
-                  active === index ? "service-tab selected" : "service-tab"
-                }
-                onClick={() => setActive(index)}
-                onKeyDown={(event) => {
-                  if (
-                    [
-                      "ArrowDown",
-                      "ArrowRight",
-                      "ArrowUp",
-                      "ArrowLeft",
-                      "Home",
-                      "End",
-                    ].includes(event.key)
-                  ) {
-                    event.preventDefault();
-                    const next =
-                      event.key === "Home"
-                        ? 0
-                        : event.key === "End"
-                          ? 2
-                          : (index +
-                              (event.key === "ArrowDown" ||
-                              event.key === "ArrowRight"
-                                ? 1
-                                : 2)) %
-                            3;
-                    setActive(next);
-                    document.getElementById(`service-tab-${next}`)?.focus();
-                  }
-                }}
-              >
-                <span className="tab-number">0{index + 1}</span>
-                <span>
-                  {item.name}
-                  <small>{item.label}</small>
-                </span>
-                <Arrow />
-              </button>
-            ))}
-            <p className="service-note">
-              Chaque prestation commence par une conversation.
-              <br />
-              Parce que tout commence par vous.
-            </p>
-          </div>
-          <div
-            className="service-panel"
-            id="service-panel"
-            role="tabpanel"
-            aria-labelledby={`service-tab-${active}`}
-          >
-            <div key={active} className="service-image image-surface">
-              <img
-                onError={(event) => {
-                  if (!event.currentTarget.src.endsWith("/images/salon.png"))
-                    event.currentTarget.src = "/images/salon.png";
-                }}
-                src={photo(service.image)}
-                alt={service.name}
-                loading="lazy"
-              />
-              <span className="image-tag">LE RITUEL 0{active + 1}</span>
-            </div>
-            <div className="service-details" key={`detail-${active}`}>
-              <p>{service.description}</p>
-              <small>{service.detail}</small>
-              <div>
-                <span>
-                  À partir de{" "}
-                  <strong>
-                    {service.price} <small>DH</small>
-                  </strong>
-                </span>
-                <a
-                  href={`${booking}?text=${encodeURIComponent(`Bonjour, je souhaite réserver : ${service.name}.`)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="round-link"
-                  aria-label={`Réserver : ${service.name}`}
-                >
-                  <Arrow />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="editorial section-pad">
-        <div className="editorial-image image-surface reveal">
-          <img
-            onError={(event) => {
-              if (!event.currentTarget.src.endsWith("/images/salon.png"))
-                event.currentTarget.src = "/images/salon.png";
+            className="button sand"
+            href="#experiences"
+            onClick={() => {
+              setFilter("all");
+              setExpanded(false);
             }}
-            src="/images/salon.png"
-            alt="L’atmosphère intime du salon"
-            loading="lazy"
-          />
-          <span>LE LUXE DE PRENDRE SON TEMPS.</span>
-        </div>
-        <div className="editorial-copy reveal">
-          <span className="large-star" aria-hidden="true">
-            <svg
-              className="flower-icon"
-              viewBox="0 0 100 100"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="7"
-              strokeLinecap="round"
-            >
-              <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-            </svg>
-          </span>
-          <p className="eyebrow">UNE PARENTHÈSE À PART</p>
-          <h2>
-            Le temps s’arrête.
-            <br />
-            <em>Vous rayonnez.</em>
-          </h2>
-          <p>
-            Une lumière douce, des gestes experts, une atmosphère qui apaise.
-            Ici, on oublie le rythme du quotidien pour retrouver l’essentiel :
-            vous.
-          </p>
-          <a
-            href={booking}
-            target="_blank"
-            rel="noreferrer"
-            className="text-link"
           >
-            Offrez-vous cette parenthèse <Arrow />
+            Explore Our Tours <Icon name="arrow" />
           </a>
-          <span className="signature">À très bientôt, Fatima.</span>
         </div>
       </section>
-      <section className="gallery section-pad" id="galerie">
-        <div className="section-heading reveal">
-          <div>
-            <p className="eyebrow">03 / LE CARNET D’INSPIRATION</p>
-            <h2>
-              La beauté se vit.
-              <br />
-              <em>Et se partage.</em>
-            </h2>
-          </div>
-          <p>
-            Des textures, des reflets, des instants.
-            <br />
-            Un aperçu de notre univers.
-          </p>
-        </div>
-        <div className="gallery-grid">
-          {gallery.map((item, index) => (
+      <section
+        className="booking-wrap"
+        id="booking"
+        aria-label="Plan your journey"
+      >
+        <div
+          className="booking-tabs"
+          role="tablist"
+          aria-label="Travel services"
+        >
+          {categories.map((item, index) => (
             <button
-              className={`gallery-item reveal gallery-${index}`}
-              key={item.image}
-              onClick={() => setLightbox(index)}
-              aria-label={`Agrandir : ${item.title}`}
+              key={item.id}
+              id={`tab-${item.id}`}
+              className={category === item.id ? "selected" : ""}
+              role="tab"
+              aria-selected={category === item.id}
+              aria-controls="booking-panel"
+              tabIndex={category === item.id ? 0 : -1}
+              onClick={() => selectCategory(item.id)}
+              onKeyDown={(event) => {
+                if (
+                  ["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)
+                ) {
+                  event.preventDefault();
+                  const next =
+                    event.key === "Home"
+                      ? 0
+                      : event.key === "End"
+                        ? 3
+                        : (index + (event.key === "ArrowRight" ? 1 : 3)) % 4;
+                  selectCategory(categories[next].id);
+                  document
+                    .getElementById(`tab-${categories[next].id}`)
+                    ?.focus();
+                }
+              }}
             >
-              <div className="gallery-photo image-surface">
-                <img
-                  onError={(event) => {
-                    if (!event.currentTarget.src.endsWith("/images/salon.png"))
-                      event.currentTarget.src = "/images/salon.png";
-                  }}
-                  src={photo(item.image, 800)}
-                  alt={item.title}
-                  loading="lazy"
-                />
-                <span className="gallery-expand" aria-hidden="true">
-                  ↗
-                </span>
-              </div>
-              <div className="gallery-caption">
-                <div>
-                  <small>{item.category}</small>
-                  <h3>{item.title}</h3>
-                </div>
-                <span>0{index + 1}</span>
-              </div>
+              <Icon name={item.icon} />
+              {item.label}
             </button>
           ))}
         </div>
-      </section>
-      <section className="booking" id="contact">
-        <div className="booking-orbit" aria-hidden="true" />
-        <div className="booking-content reveal">
-          <p className="eyebrow">ON GARDE UN MOMENT POUR VOUS ?</p>
-          <h2>
-            Votre prochain
-            <br />
-            <em>coup d’éclat.</em>
-            <span aria-hidden="true">
-              <svg
-                className="flower-icon"
-                viewBox="0 0 100 100"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="7"
-                strokeLinecap="round"
-              >
-                <path d="M50 8v84M8 50h84M20 20l60 60M20 80l60-60" />
-              </svg>
-            </span>
-          </h2>
-          <p>
-            Une envie, une question, un nouveau départ ?<br />
-            Écrivez-nous. On s’occupe de vous.
-          </p>
-          <a
-            className="button cream"
-            href={booking}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Parlons de vos envies <Arrow />
-          </a>
-          <small>RÉSERVATION SIMPLE, DIRECTEMENT SUR WHATSAPP</small>
-        </div>
-      </section>
-      <footer className="footer">
-        <div className="footer-top">
-          <a className="brand" href="#accueil">
-            <span className="brand-mark">fe.</span>
+        <form
+          className="booking-form"
+          id="booking-panel"
+          ref={form}
+          role="tabpanel"
+          aria-labelledby={`tab-${category}`}
+          onSubmit={search}
+        >
+          <label className="booking-field">
+            <Icon name="pin" />
             <span>
-              FATIMA EZZAHRA<small>L’ATELIER DE BEAUTÉ</small>
+              <span className="field-label">
+                {category === "tours" || category === "excursions"
+                  ? "Departure Location"
+                  : "Pick-up Location"}
+              </span>
+              <input
+                name="pickup"
+                aria-label="Pick-up Location"
+                placeholder="Enter location"
+                required
+                maxLength={150}
+                value={journey.pickup}
+                onChange={(event) =>
+                  setJourney({ ...journey, pickup: event.target.value })
+                }
+              />
             </span>
-          </a>
-          <p>La beauté, avec une âme.</p>
-          <a className="text-link" href="#accueil">
-            Tout en haut ↑
-          </a>
+          </label>
+          <label className="booking-field">
+            <Icon name="pin" />
+            <span>
+              <span className="field-label">
+                {category === "tours" || category === "excursions"
+                  ? "Destination"
+                  : "Drop-off Location"}
+              </span>
+              <input
+                name="destination"
+                aria-label="Drop-off Location"
+                placeholder="Enter location"
+                required
+                maxLength={150}
+                value={journey.destination}
+                onChange={(event) =>
+                  setJourney({ ...journey, destination: event.target.value })
+                }
+              />
+            </span>
+          </label>
+          <label className="booking-field date-field">
+            <Icon name="calendar" />
+            <span>
+              <span className="field-label">Date</span>
+              <input
+                name="date"
+                aria-label="Journey date"
+                type="date"
+                required
+                onFocus={(event) => {
+                  event.currentTarget.min = localDate();
+                }}
+                value={journey.date}
+                onChange={(event) =>
+                  setJourney({ ...journey, date: event.target.value })
+                }
+              />
+            </span>
+          </label>
+          <label className="booking-field passengers-field">
+            <Icon name="user" />
+            <span>
+              <span className="field-label">Passengers</span>
+              <select
+                aria-label="Passengers"
+                value={journey.passengers}
+                onChange={(event) =>
+                  setJourney({ ...journey, passengers: event.target.value })
+                }
+              >
+                {Array.from({ length: 16 }, (_, i) => (
+                  <option key={i} value={i + 1}>
+                    {i + 1} passenger{i ? "s" : ""}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </label>
+          <button className="button green search-button" type="submit">
+            Search Now <Icon name="arrow" />
+          </button>
+        </form>
+      </section>
+      <section className="services section-shell" id="services">
+        <div className="section-title">
+          <p className="eyebrow">OUR SERVICES</p>
+          <span className="gold-line" />
+          <h2>Travel Your Way</h2>
+          <p>
+            We offer a complete range of travel services to make your journey
+            seamless and unforgettable.
+          </p>
         </div>
-        <div className="footer-bottom">
-          <span>© 2026 Fatima Ezzahra. Avec soin, toujours.</span>
-          <span>COUPE · COULEUR · SOIN · CONFIANCE</span>
+        <div className="service-grid">
+          {categories.map((item) => (
+            <article className="service-card" key={item.id}>
+              <button
+                className="service-image-button"
+                onClick={() => browse(item.id)}
+                aria-label={item.action}
+              >
+                <TravelPhoto index={item.photo} label={item.title} />
+              </button>
+              <div className="service-copy">
+                <span className="service-icon">
+                  <Icon name={item.icon} />
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <button className="text-link" onClick={() => browse(item.id)}>
+                  {item.action}
+                  <Icon name="arrow" />
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="experiences" id="experiences">
+        <div className="section-shell">
+          <div className="section-title">
+            <p className="eyebrow">POPULAR DESTINATIONS</p>
+            <span className="gold-line" />
+            <h2>Top Experiences</h2>
+            <p>Handpicked tours and excursions for an extraordinary journey.</p>
+            <button
+              className="button outline view-all"
+              onClick={() => {
+                setFilter("all");
+                setExpanded(!expanded);
+              }}
+            >
+              {expanded ? "Show Less" : "View All"}
+              <Icon name="arrow" />
+            </button>
+          </div>
+          {(expanded || filter !== "all") && (
+            <div className="experience-filters" aria-label="Filter experiences">
+              {[
+                ["all", "All experiences"],
+                ["tours", "Tours"],
+                ["excursions", "Excursions"],
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  aria-pressed={filter === value}
+                  onClick={() => setFilter(value)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="experience-grid">
+            {displayed.map((item) => (
+              <button
+                className="experience-card"
+                key={item.id}
+                onClick={() => openModal({ type: "experience", item })}
+              >
+                <TravelPhoto index={item.photo} label={item.title} />
+                <div className="experience-copy">
+                  <h3>{item.title}</h3>
+                  <p>
+                    <span>
+                      <Icon name="calendar" />1 Day
+                    </span>
+                    <span className="meta-divider" />
+                    <span>
+                      <Icon name="tag" />
+                      From ${item.price}
+                    </span>
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="trip-cta">
+        <div className="palm-decoration palm-left" aria-hidden="true" />
+        <div className="palm-decoration palm-right" aria-hidden="true" />
+        <div className="cta-inner">
+          <div>
+            <p className="eyebrow light">READY FOR YOUR NEXT TRIP?</p>
+            <h2>Let’s Make It Happen</h2>
+            <p>
+              Book your transfer, tour or excursion in just a few clicks
+              <br />
+              and enjoy a seamless travel experience.
+            </p>
+          </div>
+          <button className="button sand" onClick={() => book()}>
+            Book Now <Icon name="arrow" />
+          </button>
+        </div>
+      </section>
+      <footer className="site-footer">
+        <span>© 2026 VoyagePlus. Travel beyond the ordinary.</span>
+        <div>
+          <button onClick={() => openModal({ type: "about" })}>About us</button>
+          <button onClick={() => openModal({ type: "contact" })}>
+            Contact & enquiries
+          </button>
         </div>
       </footer>
-      <a
-        className="floating-contact"
-        href={booking}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Contacter le salon sur WhatsApp"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          aria-hidden="true"
-        >
-          <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.7a8.5 8.5 0 1 1 16.3-3.8Z" />
-          <path d="M8 7.5c0 4 3.5 7.5 7.5 8l1.3-2.2-2.8-1-1 1c-1.5-.7-2.6-1.8-3.2-3.2l.9-1-1-2.6Z" />
-        </svg>
-        <span>Parlons beauté</span>
-      </a>
       <dialog
+        className={`travel-dialog ${modal?.type === "fleet" ? "wide-dialog" : ""}`}
         ref={dialog}
-        className="lightbox"
-        onCancel={() => setLightbox(null)}
-        onClick={(event) => {
-          if (event.target === event.currentTarget) setLightbox(null);
+        onCancel={(event) => {
+          if (sending) event.preventDefault();
+          else setModal(null);
         }}
-        aria-label="Carnet d’inspiration"
+        onClick={(event) => {
+          if (event.target === event.currentTarget && !sending) setModal(null);
+        }}
+        aria-label={
+          modal?.type === "booking"
+            ? "Request a reservation"
+            : modal?.type === "experience"
+              ? modal.item.title
+              : modal?.type === "fleet"
+                ? "Our fleet"
+                : "About VoyagePlus"
+        }
       >
         <button
-          className="lightbox-close"
-          aria-label="Fermer la photo"
-          onClick={() => setLightbox(null)}
+          className="dialog-close"
+          disabled={sending}
+          onClick={() => setModal(null)}
+          aria-label="Close dialog"
         >
-          ✕
+          <Icon name="close" />
         </button>
-        {lightbox !== null && (
+        {modal?.type === "experience" && (
           <>
-            <img
-              onError={(event) => {
-                if (!event.currentTarget.src.endsWith("/images/salon.png"))
-                  event.currentTarget.src = "/images/salon.png";
-              }}
-              src={photo(gallery[lightbox].image, 1600)}
-              alt={gallery[lightbox].title}
+            <TravelPhoto
+              index={modal.item.photo}
+              className="dialog-photo"
+              label={modal.item.title}
             />
-            <div className="lightbox-caption">
+            <div className="dialog-content">
+              <p className="eyebrow">YOUR NEXT ADVENTURE</p>
+              <h2>{modal.item.title}</h2>
+              <div className="detail-meta">
+                <span>
+                  <Icon name="clock" />1 day
+                </span>
+                <span>
+                  <Icon name="tag" />
+                  From ${modal.item.price} / person
+                </span>
+              </div>
+              <p>{modal.item.detail}</p>
+              <h3>What’s included</h3>
+              <ul className="included-list">
+                {modal.item.includes.map((text) => (
+                  <li key={text}>
+                    <Icon name="check" />
+                    {text}
+                  </li>
+                ))}
+              </ul>
+              <p className="small-note">
+                Starting prices are indicative. Your final itinerary,
+                availability and price will be confirmed before booking.
+              </p>
               <button
-                aria-label="Photo précédente"
-                onClick={() => setLightbox((lightbox + 2) % 3)}
+                className="button green full-button"
+                onClick={() =>
+                  book(modal.item.title, modal.item.type as Category)
+                }
               >
-                ←
-              </button>
-              <span>
-                {gallery[lightbox].title} · 0{lightbox + 1} / 03
-              </span>
-              <button
-                aria-label="Photo suivante"
-                onClick={() => setLightbox((lightbox + 1) % 3)}
-              >
-                →
+                Request this experience <Icon name="arrow" />
               </button>
             </div>
           </>
+        )}
+        {modal?.type === "fleet" && (
+          <div className="dialog-content">
+            <p className="eyebrow">TRAVEL IN COMFORT</p>
+            <h2>Our Premium Fleet</h2>
+            <p>
+              The right vehicle for every journey. Tell us your requirements and
+              we’ll confirm the best available option.
+            </p>
+            <div className="fleet-grid">
+              {vehicles.map((vehicle) => (
+                <article className="fleet-card" key={vehicle.name}>
+                  <TravelPhoto index={vehicle.photo} label={vehicle.name} />
+                  <h3>{vehicle.name}</h3>
+                  <p>{vehicle.description}</p>
+                  <div className="detail-meta">
+                    <span>
+                      <Icon name="user" />
+                      Up to {vehicle.people}
+                    </span>
+                    <span>
+                      <Icon name="bag" />
+                      {vehicle.bags} bags
+                    </span>
+                  </div>
+                  <button
+                    className="button outline"
+                    onClick={() => book(vehicle.name, "fleet")}
+                  >
+                    Choose vehicle <Icon name="arrow" />
+                  </button>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+        {(modal?.type === "about" || modal?.type === "contact") && (
+          <div className="dialog-content info-content">
+            <Logo />
+            <p className="eyebrow">TRAVEL · EXPLORE · EXPERIENCE</p>
+            <h2>
+              {modal.type === "about"
+                ? "A Better Way to Travel"
+                : "Let’s Plan Your Journey"}
+            </h2>
+            <p>
+              {modal.type === "about"
+                ? "VoyagePlus brings your journey together: private transfers, thoughtful tours, memorable excursions and comfortable vehicles. From the first arrival to the last discovery, we make planning feel effortless."
+                : "Have a particular destination, a group trip or a special occasion in mind? Send a journey enquiry with your travel details and contact information. We’ll use those details to arrange your itinerary."}
+            </p>
+            <div className="info-points">
+              <span>
+                <Icon name="car" />
+                Private transfers
+              </span>
+              <span>
+                <Icon name="map" />
+                Curated experiences
+              </span>
+              <span>
+                <Icon name="van" />
+                Flexible fleet options
+              </span>
+            </div>
+            <button
+              className="button green"
+              onClick={() => book("Tailor-made journey")}
+            >
+              Send a travel enquiry <Icon name="arrow" />
+            </button>
+          </div>
+        )}
+        {modal?.type === "booking" && (
+          <div className="dialog-content booking-dialog-content">
+            {reference ? (
+              <div className="reservation-success" role="status">
+                <span className="success-icon">
+                  <Icon name="check" />
+                </span>
+                <p className="eyebrow">YOUR JOURNEY STARTS HERE</p>
+                <h2>Request Received</h2>
+                <p>
+                  Your reservation request has been saved. Keep your reference
+                  below.
+                </p>
+                <strong>{reference}</strong>
+                <p className="small-note">
+                  This is a request, not a confirmed booking. Availability and
+                  the final price must be confirmed by the agency. No payment
+                  has been taken.
+                </p>
+                <button className="button green" onClick={() => setModal(null)}>
+                  Continue exploring <Icon name="arrow" />
+                </button>
+              </div>
+            ) : (
+              <>
+                <p className="eyebrow">LET’S MAKE IT HAPPEN</p>
+                <h2>Plan Your Journey</h2>
+                <p className="booking-summary">{modal.journey.experience}</p>
+                <form className="reservation-form" onSubmit={submitReservation}>
+                  <div className="form-row">
+                    <label>
+                      Pick-up / departure
+                      <input
+                        name="pickup"
+                        autoComplete="off"
+                        required
+                        maxLength={150}
+                        defaultValue={modal.journey.pickup}
+                        placeholder="Airport, hotel or city"
+                      />
+                    </label>
+                    <label>
+                      Destination
+                      <input
+                        name="destination"
+                        required
+                        maxLength={150}
+                        defaultValue={modal.journey.destination}
+                        placeholder="Where would you like to go?"
+                      />
+                    </label>
+                  </div>
+                  <div className="form-row">
+                    <label>
+                      Travel date
+                      <input
+                        name="date"
+                        type="date"
+                        onFocus={(event) => {
+                          event.currentTarget.min = localDate();
+                        }}
+                        required
+                        defaultValue={modal.journey.date}
+                      />
+                    </label>
+                    <label>
+                      Passengers
+                      <select
+                        name="passengers"
+                        defaultValue={modal.journey.passengers}
+                      >
+                        {Array.from({ length: 16 }, (_, i) => (
+                          <option key={i} value={i + 1}>
+                            {i + 1} passenger{i ? "s" : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  <label>
+                    Full name
+                    <input
+                      name="name"
+                      autoComplete="name"
+                      required
+                      maxLength={100}
+                      placeholder="Your full name"
+                    />
+                  </label>
+                  <div className="form-row">
+                    <label>
+                      Email address
+                      <input
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        maxLength={254}
+                        placeholder="you@example.com"
+                      />
+                    </label>
+                    <label>
+                      Phone number
+                      <input
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        required
+                        minLength={6}
+                        maxLength={30}
+                        placeholder="Include country code"
+                      />
+                    </label>
+                  </div>
+                  <label>
+                    Anything else? <span className="optional">(optional)</span>
+                    <textarea
+                      name="notes"
+                      maxLength={2000}
+                      rows={3}
+                      placeholder="Flight number, pick-up time, luggage or special requests…"
+                    />
+                  </label>
+                  <label className="consent">
+                    <input
+                      name="consent"
+                      type="checkbox"
+                      required
+                      value="yes"
+                    />
+                    <span>
+                      I agree that VoyagePlus may use these details to handle my
+                      travel request.
+                    </span>
+                  </label>
+                  <p className="small-note">
+                    We’ll save your request for agency review. Availability and
+                    pricing are subject to confirmation; no payment is taken.
+                  </p>
+                  {error && (
+                    <p className="form-error" role="alert">
+                      {error}
+                    </p>
+                  )}
+                  <button
+                    className="button green full-button"
+                    disabled={sending}
+                    type="submit"
+                  >
+                    {sending
+                      ? "Sending your request…"
+                      : "Send Reservation Request"}
+                    <Icon name="arrow" />
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
         )}
       </dialog>
     </main>

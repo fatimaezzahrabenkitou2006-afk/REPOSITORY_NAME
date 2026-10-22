@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @theme inline {
-  --color-background: #f8f5ef;
-  --color-foreground: #30291f;
-  --font-sans: Arial, Helvetica, sans-serif;
+  --color-background: #f7f3ec;
+  --color-foreground: #102e2a;
+  --font-sans: "DM Sans", Arial, sans-serif;
 }
