@@ -1,0 +1,174 @@
+﻿/* Luxury reference: ivory, forest green, champagne gold and editorial serif type. */
+body.voyage-redesign {
+  --primary: #153d36;
+  --primary-dark: #102e29;
+  --ink: #142522;
+  --muted: #646761;
+  --border: #e3ddd3;
+  --accent: #dcbd8c;
+  --accent-light: #f8f4ed;
+  --surface: #fcf9f3;
+  --gradient-primary: linear-gradient(115deg, #10362f, #1c4940);
+  --gradient-hover: linear-gradient(115deg, #0a2722, #143b33);
+  --gradient-soft: linear-gradient(135deg, #f5efe5, #fcf9f4);
+  --section-space: clamp(40px, 4vw, 60px);
+  background: #f7f2ea;
+  color: var(--ink);
+}
+.voyage-redesign ::selection { background: #e8d4b2; color: #102e29; }
+body.voyage-redesign .contact-strip { display: none; }
+body.voyage-redesign .site-header { width: 100%; max-width: none; margin: 0; top: 0; border: 0; border-radius: 0; background: #fcf9f3f5; box-shadow: 0 1px 0 #153d3608; }
+body.voyage-redesign .site-navbar .site-nav-inner { min-height: 98px; }
+body.voyage-redesign .site-navbar .site-nav-links > :is(a, button) { color: #142522; font-weight: 500; }
+body.voyage-redesign .site-navbar .site-nav-links > :is(a, button)::after { height: 1px; background: #153d36; }
+body.voyage-redesign .site-header .logo-word { color: #102e29; font-size: 34px; }
+body.voyage-redesign .logo-word > span { color: #c7a36d; }
+body.voyage-redesign .logo-word > small { color: #555e58; font-size: 6px; letter-spacing: 2px; }
+body.voyage-redesign .site-header .logo-art { background: transparent; width: 64px; height: 64px; padding: 0; border-radius: 0; }
+body.voyage-redesign .site-navbar .site-nav-toggle { border: 1px solid #cfc8bc; color: #153d36; background: transparent; border-radius: 10px; }
+body.voyage-redesign .button { border-radius: 999px; font-weight: 600; letter-spacing: 0; }
+body.voyage-redesign .button.primary { background: var(--gradient-primary); color: #fff; border: 1px solid #153d36; box-shadow: none; }
+body.voyage-redesign .button.primary:hover { background: var(--gradient-hover); color: #fff; }
+body.voyage-redesign .button.primary .icon { color: #fff; }
+body.voyage-redesign .button:is(.secondary, .outline), body.voyage-redesign .hero .button.hero-outline { background: transparent; color: #153d36; border: 1px solid #153d36; }
+body.voyage-redesign .button:is(.secondary, .outline):hover { background: #ece3d4; }
+body.voyage-redesign :is(a, button, input, select, textarea):focus-visible { outline: 3px solid #b49a70; outline-offset: 4px; }
+body.voyage-redesign .hero { border: 0; background: #153d36; }
+body.voyage-redesign .hero .hero-backdrop { inset: 0; border-radius: 0; background-image: url('/images/voyage-hero.webp'); background-position: center 56%; animation: none; }
+body.voyage-redesign .hero .hero-shade { background: linear-gradient(90deg, #062b32b8, #062b3250 48%, transparent 76%), linear-gradient(0deg, #062b3220, transparent 65%); }
+body.voyage-redesign .hero .hero-content { padding-top: clamp(48px, 5vw, 72px); padding-bottom: 145px; }
+body.voyage-redesign .hero .hero-content > * { max-width: 55%; }
+body.voyage-redesign .hero .eyebrow { color: #eddbbb; letter-spacing: 4px; font-size: 10px; }
+body.voyage-redesign .hero .hero-content h1 { font-family: var(--serif); color: #fff; font-size: clamp(48px, 5.4vw, 78px); font-weight: 600; line-height: .97; letter-spacing: -1.5px; margin: 18px 0 24px; }
+body.voyage-redesign .hero .hero-description { color: #fff; font-size: clamp(14px, 1.3vw, 18px); line-height: 1.55; margin-bottom: 24px; }
+body.voyage-redesign .hero .hero-actions .secondary, body.voyage-redesign .trip-cta .button.secondary { background: linear-gradient(115deg, #e8cfa1, #d6b27c); border: 0; color: #142522; box-shadow: none; }
+body.voyage-redesign .hero .hero-actions .secondary:hover, body.voyage-redesign .trip-cta .button.secondary:hover { background: #e5c797; }
+body.voyage-redesign .booking-wrap { background: #fcf9f3; border: 0; border-radius: 24px; box-shadow: 0 18px 50px #42321a0a; }
+body.voyage-redesign .booking-tabs { border-radius: 26px; padding: 9px; background: #f8f4ed; box-shadow: none; }
+body.voyage-redesign .booking-tabs button { border: 0; border-radius: 23px; color: #283d37; }
+body.voyage-redesign .booking-tabs button.selected { background: var(--gradient-primary); color: #fff; }
+body.voyage-redesign .booking-tabs button:not(.selected) { background: transparent; }
+body.voyage-redesign .booking-field { background: transparent; border: 1px solid #e3ddd3; border-radius: 13px; }
+body.voyage-redesign .booking-field > .icon { color: #153d36; }
+body.voyage-redesign .section-title { text-align: center; }
+body.voyage-redesign .section-title > p:last-of-type { margin-inline: auto; color: #646761; }
+body.voyage-redesign :is(.section-title h2, .catalog-overview-heading h2, .cta-inner h2) { font-family: var(--serif); font-size: clamp(35px, 3.8vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: -1px; color: #142522; }
+body.voyage-redesign .section-title .eyebrow { color: #153d36; font-size: 10px; letter-spacing: 4px; }
+body.voyage-redesign .gold-line { width: 44px; height: 2px; margin: 12px auto 14px; background: #d6b27c; }
+body.voyage-redesign :is(.services, .transfer-section, .booking-steps, .vehicle-catalog) { background-color: #f7f2ea; background-image: none; }
+body.voyage-redesign :is(.tour-section, .catalog-overview, .featured-journeys) { background-color: #fcf9f3; background-image: none; }
+body.voyage-redesign .services { padding-top: 44px; padding-bottom: 34px; }
+body.voyage-redesign .service-grid { gap: 18px; }
+body.voyage-redesign .service-card { border: 0; border-radius: 16px; background: #fcf9f3; box-shadow: none; }
+body.voyage-redesign .service-image-button { width: 100%; margin: 0; border: 0; border-radius: 15px 15px 0 0; aspect-ratio: 1.6; }
+body.voyage-redesign .service-copy { padding: 44px 24px 24px; }
+body.voyage-redesign .service-icon { width: 58px; height: 58px; border-radius: 50%; border: 5px solid #fcf9f3; left: 24px; top: -29px; background: #e7d0a8; color: #142522; }
+body.voyage-redesign .service-icon .icon { width: 25px; height: 25px; }
+body.voyage-redesign .service-copy h3 { font-family: var(--sans); font-size: 23px; font-weight: 600; letter-spacing: -.5px; }
+body.voyage-redesign .service-copy > p { font-size: 14px; line-height: 1.65; }
+body.voyage-redesign .service-card .text-link { padding: 0 0 3px; border: 0; border-bottom: 1px solid #153d36; border-radius: 0; background: transparent; color: #153d36; font-size: 13px; }
+body.voyage-redesign .featured-journeys { padding-top: 36px; padding-bottom: 40px; }
+.featured-heading { position: relative; }
+.featured-heading > .section-title { padding-inline: 170px; }
+.featured-heading > .button { position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 12px; padding: 12px 20px; }
+.featured-journey-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.featured-journey-card { display: flex; flex-direction: column; overflow: hidden; background: #f7f2ea; border-radius: 14px; transition: box-shadow 180ms ease; }
+.featured-journey-card:hover { box-shadow: 0 10px 25px #153d3614; }
+.featured-journey-photo { position: relative; aspect-ratio: 1.95; overflow: hidden; }
+.featured-journey-photo img { object-fit: cover; }
+.featured-journey-copy { padding: 16px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.featured-journey-copy h3 { font-family: var(--sans); font-size: 17px; line-height: 1.35; font-weight: 600; margin: 0 0 14px; }
+.featured-journey-copy > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 11px; margin-top: auto; }
+.featured-journey-copy > div > span { display: flex; align-items: center; gap: 6px; }
+.featured-journey-copy .icon { width: 15px; height: 15px; }
+body.voyage-redesign :is(.transfer-card, .vehicle-card) { border: 1px solid #e3ddd3; border-radius: 16px; box-shadow: none; background: #fcf9f3; }
+body.voyage-redesign .transfer-card-photo { border: 0; }
+body.voyage-redesign .transfer-card--destination { border-color: #153d36; }
+body.voyage-redesign .transfer-card--destination .transfer-card-photo { border-radius: 15px; }
+body.voyage-redesign .transfer-price-badge { background: #e7d0a8; border: 0; border-radius: 12px; }
+body.voyage-redesign .transfer-photo-category { color: #e7d0a8; }
+body.voyage-redesign .transfer-card-bottom { background: #f2ebdf; border: 0; border-radius: 12px; }
+body.voyage-redesign .catalog-hero { background: #f7f2ea; }
+body.voyage-redesign .catalog-hero-media { position: absolute; inset: 0; overflow: hidden; border-radius: 0; z-index: -2; }
+body.voyage-redesign .catalog-hero .catalog-hero-image { inset: 0; width: 100%; height: 100%; border-radius: 0; }
+body.voyage-redesign .catalog-hero-shade { inset: 0; border-radius: 0; background: linear-gradient(90deg, #082e2ce8, #082e2c85 58%, #082e2c25); }
+body.voyage-redesign .catalog-hero-content { padding-top: 36px; padding-bottom: 48px; }
+body.voyage-redesign .catalog-hero h1 { font-family: var(--serif); font-size: clamp(42px, 4.7vw, 68px); font-weight: 600; line-height: 1.05; letter-spacing: -1px; }
+body.voyage-redesign .catalog-hero .eyebrow { color: #e7d0a8; }
+body.voyage-redesign .catalog-hero-facts { gap: 12px 24px; padding-top: 20px; border-top: 1px solid #ffffff30; max-width: 780px; }
+body.voyage-redesign .catalog-hero-facts li { padding: 0; background: none; border: 0; }
+body.voyage-redesign .catalog-hero-facts .icon { color: #e7d0a8; }
+body.voyage-redesign .catalog-feature-grid article { padding: 26px; border: 1px solid #e3ddd3; border-radius: 16px; background: #f7f2ea; }
+body.voyage-redesign .catalog-feature-icon { border-radius: 50%; color: #153d36; background: #e7d0a8; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content, #vehicle-content) .catalog-overview-heading { display: block; max-width: 760px; margin: 0 auto 30px; text-align: center; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content, #vehicle-content) .section-title { text-align: center; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content, #vehicle-content) :is(.tour-card, .excursion-card, .vehicle-card) { border: 1px solid #e3ddd3; border-radius: 16px; box-shadow: none; background: #fcf9f3; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content, #vehicle-content) .transfer-card-photo { border: 0; border-radius: 15px 15px 0 0; }
+body.voyage-redesign #transfer-content .transfer-card--destination .transfer-card-photo { border-radius: 15px; }
+body.voyage-redesign :is(#tour-content, #excursion-content, #vehicle-content) :is(.tour-card, .excursion-card, .vehicle-card) h3 { font-family: var(--serif); font-size: 29px; font-weight: 600; line-height: 1.15; letter-spacing: -.5px; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content) .transfer-tools { background: #fcf9f3; border: 1px solid #e3ddd3; border-radius: 16px; box-shadow: none; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content) .transfer-filters button { color: #153d36; border: 1px solid #d8d0c3; border-radius: 999px; background: transparent; }
+body.voyage-redesign :is(#transfer-content, #tour-content, #excursion-content) .transfer-filters button:is([aria-pressed=true], :hover) { background: #153d36; color: #fff; border-color: #153d36; }
+body.voyage-redesign :is(#tour-content, #excursion-content) .transfer-card-bottom { background: #f2ebdf; border: 0; border-radius: 12px; }
+body.voyage-redesign :is(#tour-content, #excursion-content) .tour-duration { background: #e7d0a8; color: #142522; }
+body.voyage-redesign .transfer-detail > h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 4vw, 58px); letter-spacing: -1px; }
+body.voyage-redesign :is(.transfer-detail-photo, .journey-gallery-photo) { border: 1px solid #e3ddd3; border-radius: 16px; }
+body.voyage-redesign .transfer-price-panel { background: #fcf9f3; border: 1px solid #e3ddd3; border-top: 4px solid #dcbd8c; border-radius: 18px; box-shadow: none; }
+body.voyage-redesign :is(.transfer-booking-summary, .transfer-route, .tour-facts) { background: #f2ebdf; border-color: #e3ddd3; }
+body.voyage-redesign .booking-steps-grid article { background: #fcf9f3; border: 1px solid #e3ddd3; border-radius: 16px; box-shadow: none; }
+body.voyage-redesign .booking-steps-grid article > span { background: #e7d0a8; color: #153d36; border-radius: 50%; }
+body.voyage-redesign .trip-cta { background: radial-gradient(ellipse at 30% 40%, #20534a, #0b302a 78%); }
+body.voyage-redesign .cta-inner { max-width: 1344px; padding: 42px 24px; }
+body.voyage-redesign .cta-inner h2 { color: #fff; font-size: clamp(34px, 3.5vw, 48px); }
+body.voyage-redesign .trip-cta .eyebrow { color: #e7d0a8; }
+body.voyage-redesign .trip-cta .button { margin-right: 70px; min-width: 180px; }
+body.voyage-redesign .agency-footer { background: #092b26; border-top: 1px solid #ffffff12; }
+body.voyage-redesign .agency-footer-main h3 { color: #e7d0a8; }
+body.voyage-redesign .agency-footer-main a:not(.logo) { color: #d6dfd9; }
+body.voyage-redesign .agency-footer-main p, body.voyage-redesign .agency-footer-bottom { color: #b9cbc3; }
+body.voyage-redesign .travel-dialog { background: #fcf9f3; border: 1px solid #e3ddd3; border-radius: 22px; box-shadow: 0 25px 90px #082e2c33; }
+body.voyage-redesign .dialog-content h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 3vw, 40px); line-height: 1.15; }
+body.voyage-redesign .reservation-form :is(input, select, textarea) { border-color: #e3ddd3; border-radius: 10px; background: #fffdf9; }
+@media (min-width: 901px) and (max-width: 1100px) {
+  body.voyage-redesign .service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+  body.voyage-redesign .service-copy { padding-inline: 18px; }
+  body.voyage-redesign .service-copy h3 { font-size: 20px; }
+  body.voyage-redesign .service-copy > p { font-size: 12px; }
+}
+@media (min-width: 1251px) {
+  body.voyage-redesign .hero .hero-content { max-width: 1160px; padding-inline: 0; }
+  body.voyage-redesign .booking-wrap { width: calc(100% - 160px); max-width: 1245px; }
+}
+@media (max-width: 1100px) {
+  body.voyage-redesign .site-navbar .site-nav-links { background: #fcf9f3; border-color: #e3ddd3; }
+}
+@media (max-width: 900px) {
+  .featured-journey-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .featured-heading > .section-title { padding-inline: 0; }
+  .featured-heading > .button { position: static; transform: none; display: flex; width: fit-content; margin: 0 auto 24px; }
+  body.voyage-redesign .hero .hero-content > * { max-width: 70%; }
+  body.voyage-redesign .hero .hero-content h1 { font-size: clamp(48px, 7vw, 68px); }
+}
+@media (max-width: 560px) {
+  body.voyage-redesign .site-navbar .site-nav-inner { min-height: 78px; }
+  body.voyage-redesign .site-header .logo .logo-art { width: 40px; height: 44px; }
+  body.voyage-redesign .site-header .logo .logo-word { font-size: 25px; }
+  body.voyage-redesign .hero .hero-content { padding-top: 44px; padding-bottom: 145px; }
+  body.voyage-redesign .hero .hero-content > * { max-width: 100%; }
+  body.voyage-redesign .hero .hero-content h1 { font-size: clamp(43px, 10vw, 58px); }
+  body.voyage-redesign .hero .hero-backdrop { background-position: 65% center; }
+  body.voyage-redesign .hero .hero-shade { background: linear-gradient(90deg, #062b32c7, #062b326a); }
+  body.voyage-redesign .hero .eyebrow { letter-spacing: 2px; font-size: 9px; }
+  body.voyage-redesign .booking-tabs { border-radius: 22px; }
+  body.voyage-redesign .booking-tabs button { border-radius: 17px; }
+  body.voyage-redesign .service-copy { padding: 40px 20px 22px; }
+  body.voyage-redesign .service-copy h3 { font-size: 22px; }
+  body.voyage-redesign .service-copy > p { font-size: 13px; }
+  .featured-journey-grid { grid-template-columns: minmax(0, 1fr); }
+  .featured-journey-photo { aspect-ratio: 1.8; }
+  body.voyage-redesign .catalog-hero h1 { font-size: clamp(36px, 10vw, 46px); }
+  body.voyage-redesign .catalog-hero .eyebrow { font-size: 9px; letter-spacing: 1.5px; }
+  body.voyage-redesign .catalog-feature-grid article { padding: 22px; }
+  body.voyage-redesign .cta-inner { padding: 36px 20px; gap: 24px; flex-direction: column; align-items: flex-start; }
+  body.voyage-redesign .trip-cta .button { margin-right: 0; }
+}

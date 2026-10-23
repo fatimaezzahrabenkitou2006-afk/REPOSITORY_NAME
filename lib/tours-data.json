@@ -1,0 +1,164 @@
+[
+  {
+    "id": 1,
+    "title": "Marrakech → Essaouira",
+    "category": "EXCURSIONS",
+    "days": 1,
+    "itinerary": "Marrakech → Essaouira → Marrakech",
+    "slug": "marrakech-essaouira",
+    "image": "/images/tours/marrakech-essaouira.webp"
+  },
+  {
+    "id": 2,
+    "title": "Aït Ben Haddou & Ouarzazate",
+    "category": "EXCURSIONS",
+    "days": 1,
+    "itinerary": "Marrakech → Tizi n'Tichka → Aït Ben Haddou → Ouarzazate → Marrakech",
+    "slug": "ait-ben-haddou-ouarzazate",
+    "image": "/images/tours/ait-ben-haddou-ouarzazate.webp"
+  },
+  {
+    "id": 3,
+    "title": "Chefchaouen",
+    "category": "EXCURSIONS",
+    "days": 1,
+    "itinerary": "Tanger ou Fès → Chefchaouen → Retour",
+    "slug": "chefchaouen",
+    "image": "/images/tours/chefchaouen.webp"
+  },
+  {
+    "id": 4,
+    "title": "Casablanca City Tour",
+    "category": "EXCURSIONS",
+    "days": 0.5,
+    "itinerary": "Casablanca (Hassan II · Corniche · Médina · Habous)",
+    "slug": "casablanca-city-tour",
+    "image": "/images/tours/casablanca-city-tour.webp"
+  },
+  {
+    "id": 5,
+    "title": "Casablanca → Marrakech (journée privée)",
+    "category": "EXCURSIONS",
+    "days": 1,
+    "itinerary": "Casablanca → (arrêts optionnels) → Marrakech",
+    "slug": "casablanca-marrakech-journee-privee",
+    "image": "/images/tours/casablanca-marrakech-journee-privee.webp"
+  },
+  {
+    "id": 6,
+    "title": "Fès & Chefchaouen",
+    "category": "CIRCUITS COURTS",
+    "days": 2,
+    "itinerary": "Fès → Chefchaouen",
+    "slug": "fes-chefchaouen",
+    "image": "/images/tours/fes-chefchaouen.webp"
+  },
+  {
+    "id": 7,
+    "title": "Marrakech → Merzouga Sahara",
+    "category": "CIRCUITS COURTS",
+    "days": 3,
+    "itinerary": "Marrakech → Aït Ben Haddou → Dadès → Todra → Merzouga → Marrakech",
+    "slug": "marrakech-merzouga-sahara",
+    "image": "/images/tours/marrakech-merzouga-sahara.webp"
+  },
+  {
+    "id": 8,
+    "title": "Marrakech → Fès via Sahara",
+    "category": "CIRCUITS COURTS",
+    "days": 3,
+    "itinerary": "Marrakech → Aït Ben Haddou → Merzouga → Ifrane → Fès",
+    "slug": "marrakech-fes-via-sahara",
+    "image": "/images/tours/marrakech-fes-via-sahara.webp"
+  },
+  {
+    "id": 9,
+    "title": "Fès → Merzouga → Marrakech",
+    "category": "CIRCUITS COURTS",
+    "days": 3,
+    "itinerary": "Fès → Ziz → Merzouga → Dadès → Todra → Aït Ben Haddou → Marrakech",
+    "slug": "fes-merzouga-marrakech",
+    "image": "/images/tours/fes-merzouga-marrakech.webp"
+  },
+  {
+    "id": 10,
+    "title": "Sahara Privé Marrakech",
+    "category": "CIRCUITS COURTS",
+    "days": 4,
+    "itinerary": "Marrakech → Aït Ben Haddou → Ouarzazate → Dadès → Merzouga → Marrakech",
+    "slug": "sahara-prive-marrakech",
+    "image": "/images/tours/sahara-prive-marrakech.webp"
+  },
+  {
+    "id": 11,
+    "title": "Tanger → Marrakech via Chefchaouen",
+    "category": "CIRCUITS COURTS",
+    "days": 5,
+    "itinerary": "Tanger → Chefchaouen → Fès → Merzouga → Dadès → Aït Ben Haddou → Marrakech",
+    "slug": "tanger-marrakech-via-chefchaouen",
+    "image": "/images/tours/tanger-marrakech-via-chefchaouen.webp"
+  },
+  {
+    "id": 12,
+    "title": "Marrakech → Sahara, Fès & Chefchaouen",
+    "category": "CIRCUITS COURTS",
+    "days": 6,
+    "itinerary": "Marrakech → Aït Ben Haddou → Merzouga → Fès → Chefchaouen",
+    "slug": "marrakech-sahara-fes-chefchaouen",
+    "image": "/images/tours/marrakech-sahara-fes-chefchaouen.webp"
+  },
+  {
+    "id": 13,
+    "title": "Maroc via Sahara (boucle Marrakech)",
+    "category": "GRANDS CIRCUITS",
+    "days": 7,
+    "itinerary": "Marrakech → Aït Ben Haddou → Merzouga → Todra → Ouarzazate → Marrakech",
+    "slug": "maroc-via-sahara-boucle-marrakech",
+    "image": "/images/tours/maroc-via-sahara-boucle-marrakech.webp"
+  },
+  {
+    "id": 14,
+    "title": "Sahara & Fès (boucle Marrakech)",
+    "category": "GRANDS CIRCUITS",
+    "days": 8,
+    "itinerary": "Marrakech → Aït Ben Haddou → Merzouga → Todra → Fès → Ifrane → Marrakech",
+    "slug": "sahara-fes-boucle-marrakech",
+    "image": "/images/tours/sahara-fes-boucle-marrakech.webp"
+  },
+  {
+    "id": 15,
+    "title": "Casablanca → Marrakech via Sahara",
+    "category": "GRANDS CIRCUITS",
+    "days": 8,
+    "itinerary": "Casablanca → Rabat → Meknès → Volubilis → Fès → Merzouga → Dadès → Marrakech",
+    "slug": "casablanca-marrakech-via-sahara",
+    "image": "/images/tours/casablanca-marrakech-via-sahara.webp"
+  },
+  {
+    "id": 16,
+    "title": "Sahara, Fès & Chefchaouen",
+    "category": "GRANDS CIRCUITS",
+    "days": 9,
+    "itinerary": "Marrakech → Aït Ben Haddou → Merzouga → Fès → Chefchaouen → Rabat → Casablanca",
+    "slug": "sahara-fes-chefchaouen",
+    "image": "/images/tours/sahara-fes-chefchaouen.webp"
+  },
+  {
+    "id": 17,
+    "title": "Casablanca — Désert & Montagnes",
+    "category": "GRANDS CIRCUITS",
+    "days": 9,
+    "itinerary": "Casablanca → Rabat → Meknès → Fès → Ifrane → Merzouga → Dadès → Marrakech",
+    "slug": "casablanca-desert-montagnes",
+    "image": "/images/tours/casablanca-desert-montagnes.webp"
+  },
+  {
+    "id": 18,
+    "title": "Villes Impériales & Sahara",
+    "category": "GRANDS CIRCUITS",
+    "days": 10,
+    "itinerary": "Casablanca → Rabat → Meknès → Fès → Merzouga → Dadès → Aït Ben Haddou → Marrakech",
+    "slug": "villes-imperiales-sahara",
+    "image": "/images/tours/villes-imperiales-sahara.webp"
+  }
+]

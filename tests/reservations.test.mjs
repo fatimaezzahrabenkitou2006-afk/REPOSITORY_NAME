@@ -8,7 +8,7 @@ import { POST } from "../app/api/reservations/route.ts";
 let directory;
 const originalDirectory = process.env.BOOKING_DATA_DIR;
 before(async () => {
-  directory = await mkdtemp(path.join(os.tmpdir(), "voyageplus-test-"));
+  directory = await mkdtemp(path.join(os.tmpdir(), "visit-morocco-test-"));
   process.env.BOOKING_DATA_DIR = directory;
 });
 after(async () => {

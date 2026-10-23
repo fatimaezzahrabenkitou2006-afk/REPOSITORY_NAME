@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "title": "Vallée de l'Ourika & Atlas",
+    "category": "JOURNÉES COMPLÈTES",
+    "duration": "Journée",
+    "price": 80,
+    "highlights": [
+      "Villages berbères",
+      "Coopérative d'argan",
+      "Cascades de Setti Fatma"
+    ],
+    "departure": "Marrakech",
+    "slug": "vallee-de-l-ourika-atlas",
+    "image": "/images/excursions/vallee-de-l-ourika-atlas.webp"
+  },
+  {
+    "id": 2,
+    "title": "Cascades d'Ouzoud",
+    "category": "JOURNÉES COMPLÈTES",
+    "duration": "Journée",
+    "price": 160,
+    "highlights": [
+      "Chute 110 m sur 3 paliers",
+      "Barque",
+      "Singes magots",
+      "Oliveraies"
+    ],
+    "departure": "Marrakech",
+    "slug": "cascades-d-ouzoud",
+    "image": "/images/excursions/cascades-d-ouzoud.webp"
+  },
+  {
+    "id": 3,
+    "title": "Imlil & Parc national du Toubkal",
+    "category": "JOURNÉES COMPLÈTES",
+    "duration": "Journée",
+    "price": 140,
+    "highlights": [
+      "Randonnée guidée",
+      "Village d'Aroumd",
+      "Déjeuner berbère",
+      "Panoramas Atlas"
+    ],
+    "departure": "Marrakech",
+    "slug": "imlil-parc-national-du-toubkal",
+    "image": "/images/excursions/imlil-parc-national-du-toubkal.webp"
+  },
+  {
+    "id": 4,
+    "title": "Aït Ben Haddou & Ouarzazate",
+    "category": "JOURNÉES COMPLÈTES",
+    "duration": "Journée",
+    "price": 70,
+    "highlights": [
+      "Col Tizi n'Tichka (2260m)",
+      "Ksar UNESCO",
+      "Studios cinéma Ouarzazate"
+    ],
+    "departure": "Marrakech",
+    "slug": "ait-ben-haddou-ouarzazate",
+    "image": "/images/excursions/ait-ben-haddou-ouarzazate.webp"
+  },
+  {
+    "id": 5,
+    "title": "Excursion Marrakech → Essaouira",
+    "category": "JOURNÉES COMPLÈTES",
+    "duration": "Journée",
+    "price": 135,
+    "highlights": [
+      "Médina UNESCO",
+      "Port de pêche",
+      "Souks",
+      "Côte atlantique"
+    ],
+    "departure": "Marrakech",
+    "slug": "excursion-marrakech-essaouira",
+    "image": "/images/excursions/excursion-marrakech-essaouira.webp"
+  },
+  {
+    "id": 6,
+    "title": "Oukaimeden — Ski & Randonnée Atlas",
+    "category": "JOURNÉES COMPLÈTES",
+    "duration": "Journée",
+    "price": 100,
+    "highlights": [
+      "Station ski la + haute d'Afrique (2600m)",
+      "Ski hiver",
+      "Randonnée été"
+    ],
+    "departure": "Marrakech",
+    "slug": "oukaimeden-ski-randonnee-atlas",
+    "image": "/images/excursions/oukaimeden-ski-randonnee-atlas.webp"
+  },
+  {
+    "id": 7,
+    "title": "Désert d'Agafay — Coucher de soleil",
+    "category": "DEMI-JOURNÉES",
+    "duration": "Demi-journée",
+    "price": 70,
+    "highlights": [
+      "Désert pierreux",
+      "Dromadaire au coucher du soleil",
+      "Dîner sous étoiles"
+    ],
+    "departure": "Marrakech",
+    "slug": "desert-d-agafay-coucher-de-soleil",
+    "image": "/images/excursions/desert-d-agafay-coucher-de-soleil.webp"
+  },
+  {
+    "id": 8,
+    "title": "Vol en montgolfière au lever du soleil",
+    "category": "DEMI-JOURNÉES",
+    "duration": "Demi-journée",
+    "price": 175,
+    "highlights": [
+      "Survol palmeraie & Atlas",
+      "Petit-déjeuner berbère",
+      "Décollage avant aube"
+    ],
+    "departure": "Marrakech",
+    "slug": "vol-en-montgolfiere-au-lever-du-soleil",
+    "image": "/images/excursions/vol-en-montgolfiere-au-lever-du-soleil.webp"
+  },
+  {
+    "id": 9,
+    "title": "Quad & Dromadaire — Palmeraie",
+    "category": "DEMI-JOURNÉES",
+    "duration": "Demi-journée",
+    "price": 35,
+    "highlights": [
+      "Pistes quad",
+      "Camel ride entre palmiers",
+      "Thé berbère",
+      "20 min de Marrakech"
+    ],
+    "departure": "Marrakech",
+    "slug": "quad-dromadaire-palmeraie",
+    "image": "/images/excursions/quad-dromadaire-palmeraie.webp"
+  },
+  {
+    "id": 10,
+    "title": "Circuit 3 Douyars berbères",
+    "category": "DEMI-JOURNÉES",
+    "duration": "Demi-journée",
+    "price": 150,
+    "highlights": [
+      "Tissage",
+      "Poterie",
+      "Déjeuner chez l'habitant",
+      "Artisanat direct producteur"
+    ],
+    "departure": "Marrakech",
+    "slug": "circuit-3-douyars-berberes",
+    "image": "/images/excursions/circuit-3-douyars-berberes.webp"
+  }
+]

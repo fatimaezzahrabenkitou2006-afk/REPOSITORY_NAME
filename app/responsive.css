@@ -1,0 +1,88 @@
+/* Shared content edges and spacing, independent of the route's CSS bundle. */
+body { --page-gutter: clamp(20px, 3.4vw, 48px); --section-space: clamp(40px, 4vw, 60px); --content-width: 1344px; }
+body .section-shell {
+  max-width: none;
+  padding-inline: max(var(--page-gutter), calc((100% - var(--content-width)) / 2));
+}
+body .site-navbar .site-nav-inner, body .contact-strip > div, body .hero .hero-content {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+body :is(.services, .transfer-section, .booking-steps, .catalog-overview, .vehicle-catalog) { padding-block: var(--section-space); }
+body .section-title { margin-bottom: clamp(24px, 2.5vw, 34px); }
+body .section-title h2 { text-wrap: balance; }
+body .section-title > p:last-of-type { max-width: 700px; }
+
+/* Let the headline determine the hero's height; reserve room for booking tabs. */
+body .hero { height: auto; min-height: 0; }
+body .hero .hero-content { padding-top: clamp(48px, 5.5vw, 82px); padding-bottom: 165px; }
+body .booking-wrap {
+  width: calc(100% - 2 * var(--page-gutter));
+  max-width: var(--content-width);
+  margin-top: -82px;
+}
+body .booking-form { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; }
+body .booking-form .search-button { margin-left: 0; }
+body .booking-field > .icon { flex-shrink: 0; }
+body .booking-tabs { gap: 2px; }
+body .booking-tabs button { min-width: 0; }
+body .booking-tabs button::after { display: none; }
+body .journey-highlights { gap: 16px 24px; padding-block: 26px; }
+
+/* Equal card structure without fixed text heights or clipped controls. */
+body .service-card, body .vehicle-card { display: flex; flex-direction: column; min-width: 0; }
+body .service-copy, body .vehicle-card-copy { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+body .service-copy > p { min-height: 0; flex: 1; }
+body .service-copy .text-link { align-self: flex-start; margin-top: auto; }
+body .transfer-card-copy { min-width: 0; }
+body .transfer-card-bottom { margin-top: auto; gap: 12px; }
+body .transfer-card-bottom > p { min-width: 0; }
+body .transfer-card-bottom .button { flex-shrink: 0; }
+body .tour-card-itinerary, body .excursion-card-highlights { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+body .vehicle-card-copy > p { flex: 1; }
+body .vehicle-card .button { margin-top: auto; }
+body .catalog-hero { min-height: 0; }
+body .catalog-home-link { flex-wrap: wrap; row-gap: 6px; }
+body .catalog-overview-heading { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(24px, 4vw, 50px); }
+body .catalog-overview-heading > *, body .catalog-feature-grid > *, body .booking-steps-grid > *, body .agency-footer-main > * { min-width: 0; }
+body .catalog-hero .travel-photo.catalog-hero-image { background-size: auto max(100%, 36vw); }
+body .transfer-detail-grid > *, body .form-row > * { min-width: 0; }
+body .transfer-route > div { min-width: 0; }
+body .transfer-route strong, body .transfer-booking-summary strong { overflow-wrap: anywhere; }
+body .reservation-form :is(input, select, textarea) { min-width: 0; max-width: 100%; }
+body .agency-footer-main { gap: clamp(24px, 4vw, 60px); }
+
+@media (max-width: 1100px) {
+  body .booking-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body .booking-field.passengers-field { grid-column: auto; }
+  body .booking-form .search-button { grid-column: 1 / -1; width: 100%; margin: 0; min-height: 48px; }
+  body .booking-wrap { padding: 48px 24px 24px; }
+  body .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 851px) and (max-width: 1100px) {
+  body .transfer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+}
+@media (max-width: 850px) {
+  body .catalog-overview-heading { grid-template-columns: minmax(0, 1fr); }
+  body .catalog-hero .travel-photo.catalog-hero-image { background-size: auto 100%; }
+  body .transfer-card--destination .transfer-card-photo { min-height: 360px; }
+}
+@media (max-width: 560px) {
+  body .hero .hero-content { padding-top: 44px; padding-bottom: 145px; }
+  body .booking-wrap { margin-top: -70px; padding: 54px 16px 18px; }
+  body .booking-tabs { max-width: calc(100% - 16px); }
+  body .booking-field { gap: 7px; padding: 12px 9px; }
+  body .booking-field > .icon { width: 16px; height: 16px; }
+  body .transfer-card-bottom { flex-wrap: wrap; }
+  body .catalog-hero h1 { font-size: clamp(36px, 10vw, 44px); }
+  body .catalog-home-link { margin-bottom: 26px; }
+  body .catalog-feature-grid article { padding: 20px; }
+  body .catalog-feature-icon { margin-bottom: 12px; }
+  body .agency-footer-bottom { align-items: flex-start; }
+}
+@media (max-width: 420px) {
+  body .service-grid { grid-template-columns: minmax(0, 1fr); }
+  body .booking-form { grid-template-columns: minmax(0, 1fr); }
+  body .booking-field :is(input, select) { font-size: 12px; }
+}

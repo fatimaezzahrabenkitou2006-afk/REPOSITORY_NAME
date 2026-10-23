@@ -1,0 +1,45 @@
+/* Full catalogues only; keep home previews and detail pages unchanged. */
+body :is(#transfer-content, #tour-content).catalog-listing-page .catalog-overview-heading { display: block; max-width: 760px; margin: 0 auto 30px; text-align: center; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .catalog-overview-heading h2 { margin: 12px 0 16px; text-wrap: balance; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .catalog-overview-heading > p:last-child { margin: 0; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .catalog-feature-grid { align-items: stretch; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .catalog-feature-grid article { display: flex; flex-direction: column; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-section > .section-title { max-width: 760px; margin-inline: auto; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-tools { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 20px 24px; padding: 24px; margin-bottom: 28px; border: 1px solid #dce3ee; border-radius: 16px; background: #fff; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-search { max-width: 560px; width: 100%; margin: 0; font-weight: 600; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-search input { width: 100%; min-height: 46px; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-filters { grid-column: 1 / -1; justify-content: flex-start; gap: 8px; padding-top: 18px; border-top: 1px solid #e4e8ef; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-filters button { min-height: 44px; padding: 10px 14px; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-results { grid-column: 2; grid-row: 1; margin: 0; padding-bottom: 14px; text-align: right; }
+body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-grid { gap: 24px; align-items: stretch; }
+
+body #transfer-content.catalog-listing-page .transfer-card-photo { min-height: 390px; }
+body #transfer-content.catalog-listing-page .transfer-photo-caption { padding: 24px; }
+body #transfer-content.catalog-listing-page .transfer-photo-caption h3 { font-size: clamp(26px, 2.3vw, 34px); line-height: 1.18; min-height: 2.36em; margin: 10px 0 14px; }
+body #transfer-content.catalog-listing-page .transfer-photo-meta > span:first-child { min-width: 0; }
+
+body #tour-content.catalog-listing-page .tour-card .transfer-card-photo { aspect-ratio: 1.5; }
+body #tour-content.catalog-listing-page .tour-card .transfer-card-copy { padding: 22px; gap: 14px; }
+body #tour-content.catalog-listing-page .tour-card :is(.transfer-origin, h3, .transfer-card-description, .tour-card-itinerary, .transfer-vehicle) { margin: 0; }
+body #tour-content.catalog-listing-page .tour-card h3 { font-size: 27px; line-height: 1.18; text-wrap: balance; }
+body #tour-content.catalog-listing-page .tour-card .transfer-card-description { font-size: 13px; line-height: 1.8; }
+body #tour-content.catalog-listing-page .tour-card .transfer-card-bottom { padding: 14px; gap: 12px; align-items: center; }
+body #tour-content.catalog-listing-page .tour-card .transfer-card-bottom > p { margin: 0; }
+body #tour-content.catalog-listing-page .tour-card .transfer-card-bottom strong { line-height: 1.2; margin-bottom: 4px; }
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 561px) {
+    body #tour-content.catalog-listing-page .tour-card { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 14px; }
+    body #tour-content.catalog-listing-page .tour-card .transfer-card-copy { display: contents; }
+    body #tour-content.catalog-listing-page .tour-card .transfer-card-copy > * { margin-inline: 22px; }
+    body #tour-content.catalog-listing-page .tour-card .transfer-card-bottom { margin-top: 0; margin-bottom: 22px; }
+  }
+}
+@media (max-width: 560px) {
+  body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-tools { grid-template-columns: minmax(0, 1fr); padding: 18px; gap: 18px; margin-bottom: 24px; }
+  body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-results { grid-column: 1; grid-row: auto; padding: 0; text-align: left; }
+  body :is(#transfer-content, #tour-content).catalog-listing-page .transfer-filters button { flex: 1 1 auto; }
+  body #transfer-content.catalog-listing-page .transfer-photo-caption { padding: 20px; }
+  body #tour-content.catalog-listing-page .tour-card .transfer-card-copy { padding: 20px; }
+  body #tour-content.catalog-listing-page .tour-card .transfer-card-bottom { margin-top: 4px; }
+  body #tour-content.catalog-listing-page .tour-card .transfer-card-bottom .button { flex: 1 1 130px; }
+}

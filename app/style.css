@@ -12,14 +12,18 @@
   font-display: swap;
 }
 :root {
-  --green: #103c35;
-  --green-dark: #092d29;
-  --sand: #dfbf8e;
-  --sand-light: #ead4b0;
-  --cream: #f8f5ef;
-  --ink: #111c1a;
-  --muted: #616462;
-  --border: #e5dfd5;
+  --primary: #1746cc;
+  --primary-dark: #101f4a;
+  --accent: #d4b16a;
+  --accent-light: #f5f7fc;
+  --surface: #ffffff;
+  --ink: #111111;
+  --muted: #525866;
+  --border: #d9e5ef;
+  --gradient-primary: linear-gradient(120deg, #10182d 0%, #112e80 55%, #1746cc 100%);
+  --gradient-hover: linear-gradient(120deg, #0b1020 0%, #12245b 55%, #143bb0 100%);
+  --gradient-soft: linear-gradient(135deg, #f5f7fc 0%, #ffffff 55%, #edf1fb 100%);
+  --photo-frame: #0b0b0b;
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "DM Sans", Arial, sans-serif;
 }
@@ -34,7 +38,7 @@ body {
   margin: 0;
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--cream);
+  background: linear-gradient(180deg, #e7f2fc 0%, #d7eafb 55%, #edf6ff 100%);
   -webkit-font-smoothing: antialiased;
 }
 button,
@@ -78,18 +82,18 @@ h2 {
 }
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #aa7b3b;
+  outline: 3px solid #245b8f;
   outline-offset: 5px;
 }
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 ::selection {
-  color: var(--cream);
-  background: var(--green);
+  color: var(--surface);
+  background: var(--primary);
 }
 .icon {
   width: 22px;
@@ -102,7 +106,7 @@ textarea:focus-visible {
   position: fixed;
   left: 20px;
   top: -80px;
-  background: var(--green);
+  background: var(--primary);
   color: white;
   padding: 15px 22px;
   z-index: 100;
@@ -114,7 +118,7 @@ textarea:focus-visible {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #fcf9f4f5;
+  background: linear-gradient(110deg, #f4f9fff5, #d7eafaed);
   backdrop-filter: blur(18px);
 }
 .header-inner {
@@ -143,10 +147,10 @@ textarea:focus-visible {
   line-height: 1;
   font-weight: 600;
   letter-spacing: -1.3px;
-  color: #102d29;
+  color: #111111;
 }
 .logo-word > span {
-  color: #d6ad73;
+  color: #245b8f;
 }
 .logo-word > small {
   display: block;
@@ -157,7 +161,7 @@ textarea:focus-visible {
   text-align: center;
   margin-top: 8px;
   font-weight: 500;
-  color: #2d3936;
+  color: #525866;
 }
 .navigation {
   display: flex;
@@ -168,7 +172,9 @@ textarea:focus-visible {
 .navigation a,
 .navigation button {
   position: relative;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
   background: transparent;
   padding: 15px 0;
   white-space: nowrap;
@@ -181,7 +187,7 @@ textarea:focus-visible {
   left: 0;
   right: 0;
   bottom: 3px;
-  background: var(--green);
+  background: var(--primary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s;
@@ -218,21 +224,21 @@ textarea:focus-visible {
 }
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 7px 18px #0b302a14;
+  box-shadow: 0 7px 18px #173e6314;
 }
-.green {
-  background: var(--green);
+.primary {
+  background: var(--gradient-primary);
   color: #fff;
 }
-.green:hover {
-  background: #1c5046;
+.primary:hover {
+  background: var(--gradient-hover);
 }
-.sand {
-  background: linear-gradient(110deg, #ebd2a7, #dbb780);
-  color: #0c1916;
+.secondary {
+  background: linear-gradient(110deg, #ffffff, #c7e2f8);
+  color: #173e63;
 }
-.sand:hover {
-  background: #efd8b2;
+.secondary:hover {
+  background: #edf5fb;
 }
 .header-book {
   font-size: 13px;
@@ -245,6 +251,7 @@ textarea:focus-visible {
   padding: 7px;
 }
 .hero {
+  border: 3px solid var(--photo-frame);
   height: 645px;
   position: relative;
   overflow: hidden;
@@ -253,7 +260,7 @@ textarea:focus-visible {
 .hero-backdrop {
   position: absolute;
   inset: 0;
-  background: #477d83 url("/images/voyage-hero.webp") center 55% / cover;
+  background: #376b96 url("/images/voyage-hero.webp") center 55% / cover;
   z-index: -3;
   animation: hero-zoom 1.5s ease-out both;
 }
@@ -261,8 +268,8 @@ textarea:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, #012a2d9c 0%, #092c2d45 40%, transparent 70%),
-    linear-gradient(0deg, #063d3712, transparent 50%);
+    linear-gradient(90deg, #10283f9c 0%, #193b5845 40%, transparent 70%),
+    linear-gradient(0deg, #20456112, transparent 50%);
   z-index: -2;
 }
 .hero-content {
@@ -276,22 +283,22 @@ textarea:focus-visible {
   letter-spacing: 5px;
   line-height: 1.6;
   font-weight: 500;
-  color: var(--green);
+  color: var(--primary);
 }
 .eyebrow.light {
-  color: #f0d9b4;
+  color: #e1eff9;
 }
 .hero h1 {
   font-size: 80px;
   line-height: 0.96;
   letter-spacing: -1.5px;
-  color: #fffaf0;
+  color: #ffffff;
   margin: 17px 0 20px;
 }
 .hero-description {
   font-size: 20px;
   line-height: 1.55;
-  color: #fcfaf5;
+  color: #ffffff;
   letter-spacing: 0.1px;
   margin-bottom: 22px;
 }
@@ -303,11 +310,12 @@ textarea:focus-visible {
   width: calc(100% - 160px);
   max-width: 1245px;
   margin: -89px auto 0;
-  background: #fcf9f4f7;
+  background: var(--gradient-soft);
+  border: 1px solid #a5c7e5;
   position: relative;
   z-index: 5;
   border-radius: 25px;
-  box-shadow: 0 18px 55px #4a36250d;
+  box-shadow: 0 18px 55px #102b4f0d;
   padding: 48px 33px 30px;
   scroll-margin-top: 140px;
 }
@@ -321,7 +329,7 @@ textarea:focus-visible {
   width: 790px;
   max-width: 90%;
   padding: 9px 12px;
-  background: #faf6eff5;
+  background: linear-gradient(110deg, #d1e7fa, #eaf5ff);
   backdrop-filter: blur(15px);
   border-radius: 28px;
   min-height: 74px;
@@ -352,14 +360,14 @@ textarea:focus-visible {
   width: 1px;
 }
 .booking-tabs button.selected {
-  background: var(--green);
+  background: var(--gradient-primary);
   color: #fff;
 }
 .booking-tabs button.selected:after {
   display: none;
 }
 .booking-tabs button:hover:not(.selected) {
-  background: #eae3d7;
+  background: #d9e5ef;
 }
 .booking-form {
   display: grid;
@@ -379,10 +387,10 @@ textarea:focus-visible {
   transition: border-color 0.2s;
 }
 .booking-field:focus-within {
-  border-color: var(--green);
+  border-color: var(--primary);
 }
 .booking-field > .icon {
-  color: var(--green);
+  color: var(--primary);
   width: 23px;
   height: 23px;
 }
@@ -441,7 +449,7 @@ textarea:focus-visible {
 .services {
   padding-top: 42px;
   padding-bottom: 34px;
-  background: radial-gradient(ellipse at 30% 90%, #efe9df80, transparent 70%);
+  background: var(--gradient-soft);
 }
 .section-title {
   text-align: center;
@@ -456,10 +464,11 @@ textarea:focus-visible {
   display: block;
   width: 56px;
   height: 2px;
-  background: var(--sand);
+  background: var(--gradient-primary);
   margin: 12px auto 13px;
 }
 .section-title h2 {
+  color: var(--primary-dark);
   font-size: 54px;
   letter-spacing: -1.4px;
   line-height: 1.1;
@@ -477,23 +486,19 @@ textarea:focus-visible {
   gap: 19px;
 }
 .service-card {
-  background: #fdfaf5;
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  transition:
-    transform 0.35s,
-    box-shadow 0.35s;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 35px #18372f0b;
 }
 .service-image-button {
   padding: 0;
   display: block;
-  width: 100%;
+  width: calc(100% - 20px);
+  margin: 10px 10px 0;
+  border: 3px solid var(--photo-frame);
+  border-radius: 12px;
   overflow: hidden;
-  background: #d5d8c9;
+  background: #edf5fb;
   aspect-ratio: 1.6;
 }
 .travel-photo {
@@ -502,7 +507,7 @@ textarea:focus-visible {
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-  background-color: #d7dfd4;
+  background-color: #edf5fb;
   transition:
     filter 0.4s,
     transform 0.6s;
@@ -531,8 +536,9 @@ textarea:focus-visible {
 .photo-7 {
   background-position: 100% 100%;
 }
-.service-image-button:hover .travel-photo {
-  filter: brightness(1.07);
+.service-card .travel-photo {
+  transition: none;
+  filter: none;
 }
 .service-copy {
   position: relative;
@@ -542,14 +548,14 @@ textarea:focus-visible {
   position: absolute;
   left: 27px;
   top: -28px;
-  background: linear-gradient(135deg, #f1dfbc, #ddc192);
-  border: 5px solid #fcf9f4;
+  background: var(--gradient-primary);
+  border: 5px solid #ffffff;
   border-radius: 50%;
   width: 66px;
   height: 66px;
   display: grid;
   place-items: center;
-  color: #182c25;
+  color: #fff;
 }
 .service-icon .icon {
   width: 28px;
@@ -572,7 +578,7 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 13px;
-  color: var(--green);
+  color: var(--primary);
   background: none;
   font-weight: 600;
   font-size: 15px;
@@ -594,8 +600,8 @@ textarea:focus-visible {
 }
 .experiences {
   padding: 33px 0 28px;
-  background: #fffcf6a8;
-  border-top: 1px solid #eee8de;
+  background: #ffffffa8;
+  border-top: 1px solid #d9e5ef;
 }
 .experiences .section-title {
   margin-bottom: 22px;
@@ -604,16 +610,16 @@ textarea:focus-visible {
   font-size: 50px;
 }
 .outline {
-  background: transparent;
-  color: var(--green-dark);
-  border: 1px solid var(--green-dark);
+  background: linear-gradient(120deg, #f5faff, #d8eaf9);
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-dark);
   font-weight: 600;
   padding: 13px 24px;
   min-height: 45px;
   font-size: 13px;
 }
 .outline:hover {
-  background: var(--green);
+  background: var(--gradient-primary);
   color: white;
 }
 .view-all {
@@ -627,7 +633,7 @@ textarea:focus-visible {
   gap: 19px;
 }
 .experience-card {
-  background: #fcf9f3;
+  background: #ffffff;
   border-radius: 15px;
   overflow: hidden;
   text-align: left;
@@ -637,7 +643,7 @@ textarea:focus-visible {
     transform 0.3s;
 }
 .experience-card:hover {
-  box-shadow: 0 10px 27px #18372f14;
+  box-shadow: 0 10px 27px #173e6314;
   transform: translateY(-4px);
 }
 .experience-card > .travel-photo {
@@ -672,7 +678,7 @@ textarea:focus-visible {
 .meta-divider {
   height: 17px;
   width: 1px;
-  background: #9b9b92;
+  background: #94a3b8;
 }
 .experience-filters {
   display: flex;
@@ -683,7 +689,7 @@ textarea:focus-visible {
 }
 .experience-filters button {
   font-size: 12px;
-  background: #f0e9dc;
+  background: #edf5fb;
   padding: 10px 20px;
   border-radius: 30px;
   transition:
@@ -691,14 +697,14 @@ textarea:focus-visible {
     color 0.2s;
 }
 .experience-filters button[aria-pressed="true"] {
-  background: var(--green);
+  background: var(--primary);
   color: white;
 }
 .trip-cta {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: radial-gradient(ellipse at 80% 20%, #1a5548, var(--green-dark));
+  background: var(--gradient-primary);
   color: white;
 }
 .cta-inner {
@@ -726,7 +732,7 @@ textarea:focus-visible {
 .trip-cta p:not(.eyebrow) {
   font-size: 16px;
   line-height: 1.5;
-  color: #f4f4e9;
+  color: #ffffff;
 }
 .trip-cta .button {
   min-width: 195px;
@@ -742,7 +748,7 @@ textarea:focus-visible {
   background: repeating-conic-gradient(
     from 210deg at 100% 100%,
     transparent 0deg 7deg,
-    #65805c 8deg 11deg,
+    #a6c9e5 8deg 11deg,
     transparent 12deg 19deg
   );
   border-radius: 100%;
@@ -760,13 +766,14 @@ textarea:focus-visible {
   opacity: 0.12;
 }
 .site-footer {
-  max-width: 1344px;
-  margin: auto;
+  max-width: none;
+  margin: 0;
+  background: var(--gradient-primary);
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  padding: 22px 20px;
-  color: #77796e;
+  padding: 22px max(20px, calc((100% - 1304px) / 2));
+  color: #fff;
   font-size: 10px;
 }
 .site-footer > div {
@@ -780,28 +787,63 @@ textarea:focus-visible {
   color: inherit;
 }
 .site-footer button:hover {
-  color: var(--green);
+  color: var(--accent-light);
   text-decoration: underline;
 }
 .travel-dialog {
   border: 0;
   border-radius: 22px;
-  background: var(--cream);
+  background: var(--surface);
   color: var(--ink);
   padding: 0;
   max-width: 640px;
   width: calc(100% - 36px);
   max-height: 90dvh;
   overscroll-behavior: contain;
-  box-shadow: 0 25px 100px #061f2a50;
+  box-shadow: 0 25px 100px #10283f50;
   position: fixed;
   inset: 0;
+  margin: auto;
   overflow: auto;
   scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--surface);
   animation: dialog-in 0.25s ease-out;
 }
+@supports selector(::-webkit-scrollbar) {
+  .travel-dialog {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+  .travel-dialog::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .travel-dialog::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 999px;
+    margin-block: 22px;
+  }
+  .travel-dialog::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border: 3px solid var(--surface);
+    border-radius: 999px;
+    min-height: 44px;
+  }
+  .travel-dialog::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+    border-width: 2px;
+  }
+  .travel-dialog::-webkit-scrollbar-corner {
+    background: var(--surface);
+  }
+}
+@media (forced-colors: active) {
+  .travel-dialog {
+    scrollbar-color: auto;
+  }
+}
 .travel-dialog::backdrop {
-  background: #062a27b8;
+  background: #10283fb8;
   backdrop-filter: blur(7px);
 }
 .dialog-close {
@@ -815,18 +857,19 @@ textarea:focus-visible {
   place-items: center;
   width: 38px;
   height: 38px;
-  box-shadow: 0 2px 15px #142c2420;
+  box-shadow: 0 2px 15px #102b4f20;
   border-radius: 50%;
-  background: var(--cream);
+  background: var(--surface);
 }
 .dialog-close:hover {
-  background: var(--sand-light);
+  background: var(--accent-light);
 }
 .dialog-close .icon {
   width: 19px;
   height: 19px;
 }
 .dialog-photo {
+  border: 3px solid var(--photo-frame);
   height: auto;
   aspect-ratio: 2;
 }
@@ -858,7 +901,7 @@ textarea:focus-visible {
   display: flex;
   gap: 22px;
   font-size: 12px;
-  color: var(--green);
+  color: var(--primary);
   margin: 18px 0;
 }
 .detail-meta > span {
@@ -887,7 +930,7 @@ textarea:focus-visible {
 .included-list .icon {
   width: 15px;
   height: 15px;
-  color: var(--green);
+  color: var(--primary);
 }
 .dialog-content .small-note,
 .small-note {
@@ -913,13 +956,17 @@ textarea:focus-visible {
   margin-top: 25px;
 }
 .fleet-card {
-  background: #fffdf7;
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 13px;
   overflow: hidden;
   padding-bottom: 20px;
 }
 .fleet-card > .travel-photo {
+  border: 3px solid var(--photo-frame);
+  border-radius: 12px;
+  margin: 10px 10px 0;
+  width: calc(100% - 20px);
   aspect-ratio: 1.6;
   height: auto;
 }
@@ -964,17 +1011,17 @@ textarea:focus-visible {
   gap: 12px;
 }
 .info-points .icon {
-  color: var(--green);
+  color: var(--primary);
 }
 .booking-dialog-content {
   padding-top: 42px;
 }
 .booking-summary {
-  background: #e9e5d9;
+  background: #d9e5ef;
   padding: 12px 16px;
   border-radius: 9px;
   font-weight: 500;
-  color: var(--green) !important;
+  color: var(--primary) !important;
   margin-bottom: 22px;
 }
 .reservation-form {
@@ -993,9 +1040,9 @@ textarea:focus-visible {
   display: block;
   width: 100%;
   min-width: 0;
-  border: 1px solid #d9d5c9;
+  border: 1px solid #d9e5ef;
   border-radius: 9px;
-  background: #fffcf7;
+  background: #ffffff;
   padding: 12px;
   color: var(--ink);
   font-size: 12px;
@@ -1023,7 +1070,7 @@ textarea:focus-visible {
   font-weight: 400;
 }
 .consent input {
-  accent-color: var(--green);
+  accent-color: var(--primary);
   margin-top: 3px;
   flex-shrink: 0;
   width: 15px;
@@ -1034,9 +1081,9 @@ textarea:focus-visible {
 }
 .form-error {
   padding: 12px;
-  background: #f6e7dc;
+  background: #fff0f0;
   border-radius: 8px;
-  color: #87381e;
+  color: #b42318;
   font-size: 12px;
   line-height: 1.7;
 }
@@ -1048,8 +1095,8 @@ textarea:focus-visible {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: #e3eadb;
-  color: var(--green);
+  background: #edf5fb;
+  color: var(--primary);
   display: grid;
   place-items: center;
   margin: 0 auto 25px;
@@ -1073,7 +1120,7 @@ textarea:focus-visible {
   font-size: 19px;
   letter-spacing: 2px;
   margin: 24px 0;
-  color: var(--green);
+  color: var(--primary);
 }
 .reservation-success .button {
   margin-top: 10px;
@@ -1216,7 +1263,7 @@ textarea:focus-visible {
   }
   .navigation a,
   .navigation button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .header-book {
     font-size: 12px;
@@ -1412,10 +1459,10 @@ textarea:focus-visible {
     top: 85px;
     left: 0;
     right: 0;
-    background: var(--cream);
+    background: var(--surface);
     padding: 20px 6%;
     border-top: 1px solid var(--border);
-    box-shadow: 0 14px 20px #12352a0a;
+    box-shadow: 0 14px 20px #173e630a;
   }
   .navigation.is-open {
     display: flex;
@@ -1426,7 +1473,7 @@ textarea:focus-visible {
   .navigation a,
   .navigation button {
     text-align: left;
-    font-size: 14px;
+    font-size: 15px;
     padding: 12px;
   }
   .navigation a:after,
@@ -1625,8 +1672,8 @@ textarea:focus-visible {
   }
   .hero-shade {
     background:
-      linear-gradient(90deg, #012a2db8, #092c2d45 80%),
-      linear-gradient(0deg, #063d3720, transparent);
+      linear-gradient(90deg, #10283fb8, #193b5845 80%),
+      linear-gradient(0deg, #20456120, transparent);
   }
   .hero-content {
     padding: 55px 7% 100px;

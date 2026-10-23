@@ -1,0 +1,43 @@
+/* A single card design for transfers and the five selected experiences. */
+.home-experience-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.home-experience-view-all { display: flex; justify-content: center; margin-top: 30px; }
+body.voyage-redesign .home-page .journey-card { min-width: 0; overflow: hidden; display: flex; border: 1px solid #e7dfd3; border-radius: 18px; background: #fcf9f3; box-shadow: 0 5px 20px #153d3605; }
+.home-page .journey-card-link { min-width: 0; width: 100%; display: flex; flex-direction: column; flex: 1; color: inherit; text-decoration: none; }
+.home-page .journey-card-photo { position: relative; width: 100%; aspect-ratio: 1.6; flex-shrink: 0; overflow: hidden; background: #e9e2d7; }
+.home-page .journey-card-photo img { object-fit: cover; }
+.home-page .journey-card-copy { display: flex; flex-direction: column; padding: 20px; flex: 1; }
+body.voyage-redesign .home-page .journey-card h3 { font-family: var(--sans); font-size: 19px; line-height: 1.35; font-weight: 600; letter-spacing: -.4px; margin: 0 0 12px; color: #153d36; }
+.home-page .journey-card-detail { display: flex; align-items: flex-start; gap: 7px; margin: 0 0 18px; font-size: 11px; color: #74796f; line-height: 1.6; }
+.home-page .journey-card-detail .icon { width: 14px; height: 16px; flex-shrink: 0; }
+.home-page .journey-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: auto; padding-top: 4px; }
+.home-page .journey-card-meta > span { display: flex; align-items: center; gap: 6px; font-size: 11px; line-height: 1.5; color: #153d36; }
+.home-page .journey-card-meta .icon { width: 15px; height: 15px; flex-shrink: 0; }
+.home-page .journey-card-action { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 18px; padding-top: 14px; border-top: 1px solid #e7dfd3; font-size: 11px; font-weight: 600; color: #153d36; }
+.home-page .journey-card-action .icon { width: 18px; height: 18px; }
+.home-page .journey-card-link:focus-visible { outline-offset: -4px; border-radius: 18px; }
+
+@media (max-width: 1100px) {
+  .home-experience-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+}
+@media (max-width: 850px) {
+  body.voyage-redesign .home-page .transfer-preview .journey-card:nth-child(n + 7) { display: none; }
+}
+@media (max-width: 560px) {
+  .home-experience-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-page .journey-card-copy { padding: 20px; }
+  body.voyage-redesign .home-page .journey-card h3 { font-size: 21px; }
+}
+/* Keep the homepage static, including inherited and component-library effects. */
+html:has(.home-page) { scroll-behavior: auto !important; }
+body:has(.home-page) *,
+body:has(.home-page) *::before,
+body:has(.home-page) *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+body.voyage-redesign .home-page :is(.journey-card, .service-card, .vehicle-card, .button, .text-link),
+body.voyage-redesign .home-page :is(.journey-card-photo img, .service-card .travel-photo, .button .icon, .text-link .icon, .journey-card-action .icon) {
+  transform: none !important;
+  translate: none !important;
+}

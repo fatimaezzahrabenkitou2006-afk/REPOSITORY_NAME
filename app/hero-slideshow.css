@@ -1,0 +1,32 @@
+body.voyage-redesign .hero.hero-slideshow { background: #123b38; }
+.hero-slideshow-images, .hero-slideshow-image { position: absolute; inset: 0; }
+.hero-slideshow-images { z-index: -3; overflow: hidden; }
+.hero-slideshow-image { opacity: 0; }
+.hero-slideshow-image.is-active { opacity: 1; }
+.hero-slideshow-image img { object-fit: cover; object-position: center 55%; }
+body.voyage-redesign .hero.hero-slideshow .hero-shade { background: linear-gradient(180deg, #072c3245, #082c3280 50%, #082c324d), linear-gradient(90deg, #082c3238, transparent, #082c3220); }
+body.voyage-redesign .hero.hero-slideshow .hero-content { max-width: 1160px; min-height: 620px; display: flex; flex-direction: column; justify-content: center; padding-top: clamp(44px, 4.5vw, 64px); padding-bottom: 150px; text-align: center; }
+body.voyage-redesign .hero.hero-slideshow .hero-content > * { max-width: 100%; animation: none; }
+.hero-slide-copy { margin-inline: auto; width: 100%; }
+body.voyage-redesign .hero.hero-slideshow .hero-content .hero-slide-title { font-size: clamp(26px, 4.5vw, 64px); font-weight: 700; white-space: nowrap; line-height: 1.1; margin: 18px 0 22px; color: #fff; }
+.hero-slide-messages { display: grid; }
+.hero-slide-message { grid-area: 1 / 1; opacity: 0; pointer-events: none; }
+.hero-slide-message.is-active { opacity: 1; pointer-events: auto; }
+body.voyage-redesign .hero.hero-slideshow .eyebrow { margin: 0 auto; max-width: 100%; }
+body.voyage-redesign .hero.hero-slideshow .hero-description { max-width: 620px; margin: 0 auto 24px; min-height: 3.1em; }
+body.voyage-redesign .hero.hero-slideshow .hero-actions { justify-content: center; }
+.hero-slideshow-controls { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 24px; position: relative; }
+.hero-slideshow-controls button { background: #ffffff0c; color: #fff; border: 1px solid #ffffff70; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; padding: 0; cursor: pointer; }
+.hero-slideshow-controls button:hover { background: #ffffff26; }
+.hero-slide-dots { display: flex; align-items: center; gap: 2px; }
+.hero-slide-dots button { border: 0; background: transparent; width: 40px; height: 40px; }
+.hero-slide-dots button > span { display: block; height: 7px; width: 7px; border-radius: 99px; background: #ffffff70; }
+.hero-slide-dots button[aria-current=true] > span { width: 24px; background: #e7d0a8; }
+@media (max-width: 560px) {
+  body.voyage-redesign .hero.hero-slideshow .hero-content { min-height: 500px; padding-top: 42px; padding-bottom: 140px; padding-inline: 20px; }
+  body.voyage-redesign .hero.hero-slideshow .hero-content .hero-slide-title { font-size: clamp(19px, 5.2vw, 28px); letter-spacing: -.5px; }
+  body.voyage-redesign .hero.hero-slideshow .hero-description { font-size: 13px; min-height: 6.2em; max-width: 340px; }
+  body.voyage-redesign .hero.hero-slideshow .eyebrow { font-size: 8px; letter-spacing: 1.8px; }
+  .hero-slideshow-image img { object-position: 62% center; }
+  .hero-slideshow-controls { margin-top: 20px; }
+}

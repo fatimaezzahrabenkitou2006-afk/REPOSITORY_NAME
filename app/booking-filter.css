@@ -1,0 +1,54 @@
+/* Material UI controls keep the original booking grid and measured dimensions. */
+body.voyage-redesign .booking-ui .booking-mui-field { height: 77.5px; min-height: 0; padding: 0; border: 0; border-radius: 13px; display: inline-flex; align-items: stretch; gap: 0; background: transparent; }
+.booking-ui .booking-mui-field .MuiInputBase-root { height: 100%; width: 100%; padding: 0 15px; gap: 10px; border-radius: 13px; background: #fffdf91f; transition: background 180ms ease, box-shadow 180ms ease; }
+.booking-ui .booking-mui-field .MuiInputBase-root:hover { background: #fffdf9; }
+.booking-ui .booking-mui-field .MuiInputBase-root.Mui-focused { background: #fffdf9; box-shadow: 0 0 0 3px #153d3610; }
+.booking-ui .booking-mui-field .MuiOutlinedInput-notchedOutline { border: 1px solid #ded7cb; }
+.booking-ui .booking-mui-field .Mui-focused .MuiOutlinedInput-notchedOutline { border: 1.5px solid #153d36; }
+.booking-ui .booking-mui-field .MuiOutlinedInput-notchedOutline legend { display: none; }
+.booking-ui .booking-mui-field .MuiInputLabel-root { top: 13px; left: 45px; transform: none; max-width: calc(100% - 64px); font-family: var(--sans); font-size: 10px; font-weight: 500; line-height: 1.5; letter-spacing: 0; color: #153d36; }
+.booking-ui .booking-mui-field .MuiFormLabel-asterisk { display: none; }
+.booking-ui .booking-mui-field .MuiInputAdornment-root { height: auto; margin: 0; flex-shrink: 0; color: #153d36; }
+.booking-ui .booking-mui-field .MuiInputAdornment-root .icon { width: 20px; height: 20px; }
+.booking-ui .booking-mui-field .MuiInputBase-input { font-family: var(--sans); font-size: 12px; color: #626961; line-height: 21px; height: 21px; min-width: 0; padding: 27px 0 9px; box-sizing: content-box; outline: 0; }
+.booking-ui .booking-mui-field .MuiInputBase-input::placeholder { opacity: .85; }
+.booking-ui .booking-mui-field .MuiSelect-select { padding: 27px 20px 9px 0; display: flex; align-items: center; min-height: 21px; }
+.booking-ui .booking-mui-field .MuiSelect-icon { right: 11px; width: 18px; color: #153d36; }
+.booking-ui .booking-mui-field input[type=date] { font-size: 11px; }
+body.voyage-redesign .booking-ui .booking-tabs { display: block; height: 74.5px; min-height: 0; padding: 9px; }
+.booking-ui .booking-tabs .MuiTabs-scroller, .booking-ui .booking-tabs .MuiTabs-list { height: 100%; }
+.booking-ui .booking-tabs .MuiTabs-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; }
+.booking-ui .booking-tabs .MuiTabs-indicator { display: none; }
+body.voyage-redesign .booking-ui .booking-service-tab { min-width: 0; max-width: none; min-height: 0; height: 100%; padding: 10px; font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1.5; text-transform: none; letter-spacing: 0; gap: 12px; }
+.booking-ui .booking-service-tab .icon { margin: 0; width: 21px; height: 21px; flex-shrink: 0; }
+body.voyage-redesign .booking-ui .booking-submit { font-family: var(--sans); font-size: 13px; font-weight: 600; line-height: 1.5; padding: 20px 26px; text-transform: none; letter-spacing: 0; white-space: nowrap; gap: 13px; }
+.booking-ui .booking-submit .MuiButton-endIcon { margin: 0; }
+.booking-ui .booking-submit .icon { width: 22px; height: 22px; }
+.booking-passenger-menu .MuiMenuItem-root { min-height: 40px; padding-inline: 20px; font-family: var(--sans); font-size: 13px; color: #153d36; }
+.booking-passenger-menu .MuiMenuItem-root.Mui-selected { background: #e9dfce; font-weight: 600; }
+.booking-passenger-menu .MuiMenuItem-root:hover { background: #f2ebdf; }
+@media (max-width: 1250px) {
+  body.voyage-redesign .booking-ui .booking-tabs { height: 70px; }
+  body.voyage-redesign .booking-ui .booking-submit { padding: 18px 22px; }
+}
+@media (max-width: 1100px) {
+  body.voyage-redesign .booking-ui .booking-mui-field { height: 69.5px; }
+  body.voyage-redesign .booking-ui .booking-service-tab { font-size: 12px; gap: 10px; }
+  .booking-ui .booking-mui-field .MuiInputLabel-root { top: 10px; }
+}
+@media (max-width: 850px) {
+  body.voyage-redesign .booking-ui .booking-mui-field { height: 73px; }
+}
+@media (max-width: 560px) {
+  body.voyage-redesign .booking-ui .booking-mui-field { height: 69.5px; }
+  body.voyage-redesign .booking-ui .booking-tabs { height: 73px; }
+  body.voyage-redesign .booking-ui .booking-service-tab { flex-direction: column; padding: 6px 2px; font-size: 10px; gap: 4px; }
+  .booking-ui .booking-service-tab .icon { width: 17px; height: 17px; }
+  .booking-ui .booking-mui-field .MuiInputBase-root { padding-inline: 12px; gap: 9px; }
+  .booking-ui .booking-mui-field .MuiInputLabel-root { left: 41px; }
+  .booking-ui .booking-mui-field .MuiInputBase-input { font-size: 12px; }
+  body.voyage-redesign .booking-ui .booking-submit { padding: 14px 22px; font-size: 12px; }
+}
+@media (max-width: 360px) {
+  body.voyage-redesign .booking-ui .booking-mui-field { height: 68px; }
+}

@@ -1,0 +1,330 @@
+[
+  {
+    "from": "Marrakech",
+    "to": "Aéroport Marrakech Menara",
+    "price": 15,
+    "category": "AÉROPORTS",
+    "slug": "marrakech-aeroport-marrakech-menara",
+    "image": "/images/transfers/aeroport-marrakech-menara.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Aéroport Mohammed V (Casablanca)",
+    "price": 120,
+    "category": "AÉROPORTS",
+    "slug": "marrakech-aeroport-mohammed-v-casablanca",
+    "image": "/images/transfers/aeroport-mohammed-v-casablanca.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Aéroport Agadir Al Massira",
+    "price": 120,
+    "category": "AÉROPORTS",
+    "slug": "marrakech-aeroport-agadir-al-massira",
+    "image": "/images/transfers/aeroport-agadir-al-massira.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Aéroport Ibn Battouta (Tanger)",
+    "price": 300,
+    "category": "AÉROPORTS",
+    "slug": "marrakech-aeroport-ibn-battouta-tanger",
+    "image": "/images/transfers/aeroport-ibn-battouta-tanger.webp"
+  },
+  {
+    "from": "Aéroport Mohammed V",
+    "to": "Casablanca",
+    "price": 30,
+    "category": "AÉROPORTS",
+    "slug": "aeroport-mohammed-v-casablanca",
+    "image": "/images/transfers/casablanca.webp"
+  },
+  {
+    "from": "Aéroport Mohammed V",
+    "to": "Rabat",
+    "price": 70,
+    "category": "AÉROPORTS",
+    "slug": "aeroport-mohammed-v-rabat",
+    "image": "/images/transfers/rabat.webp"
+  },
+  {
+    "from": "Aéroport Agadir Al Massira",
+    "to": "Essaouira",
+    "price": 120,
+    "category": "AÉROPORTS",
+    "slug": "aeroport-agadir-al-massira-essaouira",
+    "image": "/images/transfers/essaouira.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Béni Mellal",
+    "price": 135,
+    "category": "VILLES",
+    "slug": "marrakech-beni-mellal",
+    "image": "/images/transfers/beni-mellal.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "El Jadida",
+    "price": 125,
+    "category": "VILLES",
+    "slug": "marrakech-el-jadida",
+    "image": "/images/transfers/el-jadida.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Casablanca",
+    "price": 120,
+    "category": "VILLES",
+    "slug": "marrakech-casablanca",
+    "image": "/images/transfers/casablanca.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Rabat",
+    "price": 165,
+    "category": "VILLES",
+    "slug": "marrakech-rabat",
+    "image": "/images/transfers/rabat.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Azrou",
+    "price": 310,
+    "category": "VILLES",
+    "slug": "marrakech-azrou",
+    "image": "/images/transfers/azrou.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Ifrane",
+    "price": 330,
+    "category": "VILLES",
+    "slug": "marrakech-ifrane",
+    "image": "/images/transfers/ifrane.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Meknès",
+    "price": 330,
+    "category": "VILLES",
+    "slug": "marrakech-meknes",
+    "image": "/images/transfers/meknes.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Tanger",
+    "price": 300,
+    "category": "VILLES",
+    "slug": "marrakech-tanger",
+    "image": "/images/transfers/tanger.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Tétouan",
+    "price": 300,
+    "category": "VILLES",
+    "slug": "marrakech-tetouan",
+    "image": "/images/transfers/tetouan.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Fès",
+    "price": 280,
+    "category": "VILLES",
+    "slug": "marrakech-fes",
+    "image": "/images/transfers/fes.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Chefchaouen",
+    "price": 430,
+    "category": "VILLES",
+    "slug": "marrakech-chefchaouen",
+    "image": "/images/transfers/chefchaouen.webp"
+  },
+  {
+    "from": "Essaouira",
+    "to": "Casablanca",
+    "price": 230,
+    "category": "VILLES",
+    "slug": "essaouira-casablanca",
+    "image": "/images/transfers/casablanca.webp"
+  },
+  {
+    "from": "Agadir",
+    "to": "Casablanca",
+    "price": 230,
+    "category": "VILLES",
+    "slug": "agadir-casablanca",
+    "image": "/images/transfers/casablanca.webp"
+  },
+  {
+    "from": "Agadir",
+    "to": "Rabat",
+    "price": 260,
+    "category": "VILLES",
+    "slug": "agadir-rabat",
+    "image": "/images/transfers/rabat.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Essaouira",
+    "price": 95,
+    "category": "CÔTE & SUD",
+    "slug": "marrakech-essaouira",
+    "image": "/images/transfers/essaouira.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Safi",
+    "price": 145,
+    "category": "CÔTE & SUD",
+    "slug": "marrakech-safi",
+    "image": "/images/transfers/safi.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Agadir",
+    "price": 125,
+    "category": "CÔTE & SUD",
+    "slug": "marrakech-agadir",
+    "image": "/images/transfers/agadir.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Oualidia",
+    "price": 180,
+    "category": "CÔTE & SUD",
+    "slug": "marrakech-oualidia",
+    "image": "/images/transfers/oualidia.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Taghazout",
+    "price": 135,
+    "category": "CÔTE & SUD",
+    "slug": "marrakech-taghazout",
+    "image": "/images/transfers/taghazout.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Taroudant",
+    "price": 190,
+    "category": "CÔTE & SUD",
+    "slug": "marrakech-taroudant",
+    "image": "/images/transfers/taroudant.webp"
+  },
+  {
+    "from": "Essaouira",
+    "to": "Agadir",
+    "price": 105,
+    "category": "CÔTE & SUD",
+    "slug": "essaouira-agadir",
+    "image": "/images/transfers/agadir.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Agafay",
+    "price": 70,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-agafay",
+    "image": "/images/transfers/agafay.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Vallée de l'Ourika",
+    "price": 80,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-vallee-de-l-ourika",
+    "image": "/images/transfers/vallee-de-l-ourika.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Imlil",
+    "price": 90,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-imlil",
+    "image": "/images/transfers/imlil.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Aït Ben Haddou",
+    "price": 125,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-ait-ben-haddou",
+    "image": "/images/transfers/ait-ben-haddou.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Ouarzazate",
+    "price": 135,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-ouarzazate",
+    "image": "/images/transfers/ouarzazate.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Cascades d'Ouzoud",
+    "price": 160,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-cascades-d-ouzoud",
+    "image": "/images/transfers/cascades-d-ouzoud.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Vallée du Dadès",
+    "price": 210,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-vallee-du-dades",
+    "image": "/images/transfers/vallee-du-dades.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Gorges du Todra",
+    "price": 245,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-gorges-du-todra",
+    "image": "/images/transfers/gorges-du-todra.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Erfoud",
+    "price": 310,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-erfoud",
+    "image": "/images/transfers/erfoud.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Zagora",
+    "price": 450,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-zagora",
+    "image": "/images/transfers/zagora.webp"
+  },
+  {
+    "from": "Marrakech",
+    "to": "Merzouga",
+    "price": 450,
+    "category": "DÉSERT & NATURE",
+    "slug": "marrakech-merzouga",
+    "image": "/images/transfers/merzouga.webp"
+  },
+  {
+    "from": "Essaouira",
+    "to": "Agafay",
+    "price": 120,
+    "category": "DÉSERT & NATURE",
+    "slug": "essaouira-agafay",
+    "image": "/images/transfers/agafay.webp"
+  },
+  {
+    "from": "Agadir",
+    "to": "Agafay",
+    "price": 145,
+    "category": "DÉSERT & NATURE",
+    "slug": "agadir-agafay",
+    "image": "/images/transfers/agafay.webp"
+  }
+]

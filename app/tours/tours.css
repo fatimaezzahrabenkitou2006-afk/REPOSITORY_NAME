@@ -1,0 +1,24 @@
+.tour-section { background: linear-gradient(145deg, #cce2f5, #e8f3fd 55%, #d7eafa); }
+.tour-duration { position: absolute; top: 16px; right: 16px; display: flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 30px; color: var(--surface); background: var(--gradient-primary); font-size: 11px; }
+.tour-duration .icon { width: 14px; height: 14px; }
+.tour-card h3 { font-size: 27px; }
+.tour-card-itinerary { color: var(--primary); font-size: 11px; line-height: 1.8; margin-bottom: 18px; }
+.transfer-card-bottom .tour-quote { font-size: 22px; }
+.tour-quote-price { font-family: var(--serif); font-size: 48px; line-height: 1.2; color: var(--primary); margin-top: 20px; }
+.tour-facts { display: flex; flex-wrap: wrap; gap: 15px 24px; padding: 20px; margin: 24px 0; border-radius: 14px; background: var(--gradient-soft); }
+.tour-facts > span { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--primary); }
+.tour-facts .icon { width: 18px; height: 18px; }
+.tour-route-overview { padding: 18px 20px; border-left: 3px solid var(--accent); background: #ffffff; }
+.tour-itinerary { list-style: none; padding: 0; margin: 28px 0; }
+.tour-itinerary li { display: flex; gap: 18px; position: relative; padding-bottom: 25px; }
+.tour-itinerary li:not(:last-child)::before { content: ""; position: absolute; top: 38px; left: 19px; bottom: 0; width: 1px; background: var(--accent); }
+.tour-stop-number { flex-shrink: 0; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-primary); color: var(--accent-light); font-size: 12px; }
+.tour-stop-label { display: block; font-size: 10px; color: var(--muted); margin: 2px 0 5px; }
+.tour-itinerary strong { font-size: 15px; font-weight: 500; color: var(--primary); }
+.tour-summary-itinerary { font-size: 11px; line-height: 1.8; color: var(--primary); }
+@media (max-width: 560px) {
+  .tour-card h3 { font-size: 27px; }
+  .tour-duration { top: 12px; right: 12px; }
+  .tour-facts { padding: 16px; gap: 14px; }
+  .tour-quote-price { font-size: 44px; }
+}

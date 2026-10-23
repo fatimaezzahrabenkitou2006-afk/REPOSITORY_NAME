@@ -1,0 +1,12 @@
+/* A text-only signature in the site's forest green and champagne palette. */
+body.voyage-redesign .logo .logo-word.logo-wordmark { display: inline-block; font-family: var(--serif); font-size: clamp(31px, 2.6vw, 38px); line-height: 1.15; letter-spacing: -.8px; white-space: nowrap; }
+body.voyage-redesign .logo .logo-wordmark > .brand-visit { color: #153d36; font-weight: 500; font-style: italic; }
+body.voyage-redesign .logo .logo-wordmark > .brand-morocco { position: relative; display: inline-block; color: #ad844b; font-weight: 600; font-style: normal; }
+.logo-wordmark .brand-morocco::after { content: ""; position: absolute; bottom: -3px; left: 1px; right: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; }
+.logo:is(:hover, :focus-visible) .brand-morocco::after { transform: scaleX(1); }
+body.voyage-redesign .agency-footer .logo .logo-wordmark > .brand-visit { color: #fcf9f3; }
+body.voyage-redesign .agency-footer .logo .logo-wordmark > .brand-morocco { color: #dcbd8c; }
+@media (prefers-reduced-motion: no-preference) { .logo-wordmark .brand-morocco::after { transition: transform 250ms ease; } }
+@media (max-width: 560px) {
+  body.voyage-redesign .logo .logo-word.logo-wordmark { font-size: 27px; letter-spacing: -.7px; }
+}

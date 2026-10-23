@@ -19,7 +19,7 @@ export async function POST(request: Request) {
   }
   if (!sameHost) {
     return Response.json(
-      { error: "Please submit your request from the VoyagePlus website." },
+      { error: "Please submit your request from the Visit Morocco website." },
       { status: 403 },
     );
   }

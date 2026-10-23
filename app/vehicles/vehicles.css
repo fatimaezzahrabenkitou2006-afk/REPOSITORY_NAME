@@ -1,0 +1,28 @@
+body #vehicle-content .catalog-overview-heading { display: block; max-width: 760px; margin: 0 auto 30px; text-align: center; }
+body #vehicle-content .catalog-overview-heading h2 { margin: 12px 0 16px; text-wrap: balance; }
+body #vehicle-content .catalog-overview-heading > p:last-child { margin: 0; }
+body #vehicle-content .catalog-feature-grid { align-items: stretch; }
+body #vehicle-content .catalog-feature-grid article { display: flex; flex-direction: column; }
+body #vehicle-content .vehicle-catalog > .section-title { max-width: 760px; margin-inline: auto; }
+body #vehicle-content .vehicle-card-grid { gap: 24px; align-items: stretch; }
+body #vehicle-content .vehicle-card > .travel-photo { aspect-ratio: 1.5; flex: none; }
+body #vehicle-content .vehicle-card-copy { padding: 22px; gap: 16px; }
+body #vehicle-content .vehicle-card h3 { margin: 0; font-size: 29px; line-height: 1.18; text-wrap: balance; }
+body #vehicle-content .vehicle-card-copy > p { margin: 0; font-size: 13px; line-height: 1.85; }
+body #vehicle-content .vehicle-capacity { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 16px 0; margin: 0; }
+body #vehicle-content .vehicle-capacity span { font-size: 12px; line-height: 1.6; gap: 9px; }
+body #vehicle-content .vehicle-capacity .icon { flex-shrink: 0; }
+body #vehicle-content .vehicle-card .button { min-height: 48px; }
+body #vehicle-content .vehicle-note { max-width: 900px; padding: 20px 24px; border: 1px solid #dce3ee; border-radius: 14px; background: #fff; margin: 28px auto 0; }
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 561px) {
+    body #vehicle-content .vehicle-card { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 16px; }
+    body #vehicle-content .vehicle-card-copy { display: contents; }
+    body #vehicle-content .vehicle-card .vehicle-card-copy > * { margin-inline: 22px; }
+    body #vehicle-content .vehicle-card .button { width: auto; margin-top: 0; margin-bottom: 22px; align-self: end; }
+  }
+}
+@media (max-width: 560px) {
+  body #vehicle-content .vehicle-card-copy { padding: 20px; }
+  body #vehicle-content .vehicle-note { padding: 18px; text-align: left; }
+}

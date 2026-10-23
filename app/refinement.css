@@ -1,0 +1,153 @@
+html body { background: #fff; }
+
+.contact-strip { background: var(--gradient-primary); color: #fff; font-size: 11px; }
+.contact-strip > div { max-width: 1340px; margin: auto; padding: 10px 30px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.contact-strip a { display: flex; align-items: center; gap: 12px; }
+.contact-strip a > span { font-weight: 700; }
+.contact-strip .icon { width: 14px; height: 14px; }
+body .site-header { background: #ffffffed; box-shadow: 0 3px 22px #173e630a; border-bottom: 1px solid #e3eaf1; }
+body .logo-art { width: 64px; height: 64px; }
+body .logo-word > small { font-size: 6px; letter-spacing: 1.9px; }
+body .navigation { gap: 24px; margin-left: 10px; }
+
+.hero .hero-backdrop { background-image: url("/images/tours/marrakech-merzouga-sahara.webp"); background-position: center 54%; }
+.hero .hero-shade { background: linear-gradient(90deg, #0a2546dc, #10385882 52%, #163a4f15), linear-gradient(0deg, #0b274c55, transparent 65%); }
+.hero .hero-content { max-width: 1180px; padding: 82px 0 130px; }
+.hero .hero-content h1 { font-size: clamp(64px, 6vw, 88px); line-height: 1; letter-spacing: -2px; margin: 22px 0; }
+.hero .hero-content h1 span { color: #d7eaff; font-style: italic; font-weight: 500; }
+.hero .hero-description { font-size: 17px; max-width: 620px; line-height: 1.85; margin-bottom: 28px; }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.hero .hero-outline { background: #ffffff0c; color: #fff; border: 1px solid #ffffffb3; }
+.hero .hero-outline:hover { background: #ffffff20; }
+.hero .hero-actions .button { padding: 16px 24px; font-size: 13px; min-height: 50px; }
+body .button { border-radius: 11px; }
+body .button.primary { border: 1px solid #1b4a74; box-shadow: 0 5px 14px #173e6312; }
+body .button.outline { background: #fff; border-color: var(--primary); }
+body .button.outline:hover { background: var(--gradient-primary); }
+body .booking-wrap { background: #fff; border-color: #d9e5ef; box-shadow: 0 18px 50px #173e6312; }
+body .booking-tabs { background: #edf5fc; }
+body .booking-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.journey-highlights { display: flex; align-items: center; justify-content: space-around; gap: 20px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 30px; border-bottom: 1px solid #e5eaf0; }
+.journey-highlights > span { display: flex; gap: 10px; align-items: center; color: var(--primary-dark); font-size: 12px; }
+.journey-highlights .icon { width: 20px; height: 20px; color: var(--primary); }
+body .services { background: #f5f8fc; padding-top: 58px; padding-bottom: 52px; }
+.service-card .service-image-button { position: relative; }
+.service-card .service-image-button img { object-fit: cover; }
+body .section-title .eyebrow { letter-spacing: 3px; font-size: 10px; }
+body .section-title h2 { font-size: clamp(34px, 3.7vw, 50px); letter-spacing: -1px; }
+body .section-title > p:last-of-type { max-width: 700px; margin-left: auto; margin-right: auto; font-size: 14px; }
+body .service-copy { padding: 45px 24px 26px; }
+body .service-copy > p { font-size: 13px; line-height: 1.9; }
+body .service-copy h3 { font-size: 23px; }
+body .text-link { font-size: 12px; }
+body .transfer-section { background: #fff; padding-top: 66px; padding-bottom: 66px; }
+body .tour-section { background: linear-gradient(135deg, #e5f1fc, #f4f9ff 60%, #d7e9f9); }
+body .excursion-section { background: #fff; }
+body .transfer-card { border-color: #dfe7ef; box-shadow: 0 6px 26px #173e6309; }
+body .transfer-card h3 { font-size: 27px; line-height: 1.2; }
+body .transfer-card-description { font-size: 13px; line-height: 1.8; }
+body .transfer-card-bottom { padding: 14px; background: #f1f7fc; border: 1px solid #dfebf5; border-radius: 12px; flex-wrap: wrap; }
+body .transfer-card-bottom strong { font-size: 28px; font-weight: 700; }
+body .transfer-card-bottom .tour-quote { font-size: 22px; }
+body .transfer-card-bottom .button { font-size: 11px; padding: 12px; }
+body .transfer-intro { background: radial-gradient(ellipse at 85% 20%, #a6d4ff25, transparent 55%), var(--gradient-primary); }
+body .transfer-price-panel { background: #fff; box-shadow: 0 10px 38px #173e6310; border-top: 4px solid var(--primary); }
+body .transfer-detail-price { font-family: var(--sans); font-size: 52px; font-weight: 700; letter-spacing: -2px; }
+body .transfer-detail-price > span { font-size: 28px; }
+body .transfer-booking-summary { background: #edf5fc; }
+
+.booking-steps { padding-top: 64px; padding-bottom: 70px; }
+.booking-steps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.booking-steps-grid article { padding: 28px; background: #fff; border: 1px solid #dfe7ef; border-radius: 16px; }
+.booking-steps-grid article > span { display: grid; place-items: center; width: 44px; height: 44px; color: var(--primary); background: #e8f2fc; border-radius: 12px; font-size: 14px; font-weight: 600; margin-bottom: 24px; }
+.booking-steps-grid h3 { font-size: 17px; line-height: 1.5; margin-bottom: 12px; }
+.booking-steps-grid p { color: var(--muted); font-size: 13px; line-height: 1.9; }
+body .trip-cta h2 { font-size: 40px; max-width: 570px; }
+
+.agency-footer { background: var(--gradient-primary); color: #fff; }
+.agency-footer-main { display: grid; grid-template-columns: 1.15fr .7fr 1fr; gap: 70px; padding-top: 55px; padding-bottom: 45px; }
+.agency-footer-main > div { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.agency-footer-main h3 { font-size: 14px; margin: 6px 0 10px; }
+.agency-footer-main p { color: #dceaf7; font-size: 13px; line-height: 1.9; max-width: 320px; }
+.agency-footer-main a:not(.logo) { font-size: 12px; line-height: 1.8; }
+.agency-footer-main a:not(.logo):hover { text-decoration: underline; text-underline-offset: 4px; }
+.agency-footer .logo-art { background: #fff; border-radius: 12px; padding: 5px; width: 55px; height: 55px; }
+.agency-footer .logo-word { color: #fff; font-size: 31px; }
+.agency-footer .logo-word > span { color: #bedfff; }
+.agency-footer .logo-word > small { color: #dceaf7; }
+.agency-footer-bottom { padding-top: 20px; padding-bottom: 22px; border-top: 1px solid #ffffff26; display: flex; justify-content: space-between; gap: 16px; font-size: 10px; color: #dceaf7; }
+
+.journey-gallery { margin-top: 22px; }
+.journey-gallery > p { display: flex; justify-content: space-between; gap: 10px; color: var(--primary-dark); font-size: 12px; margin-bottom: 12px; }
+.journey-gallery > p > span { font-size: 10px; color: var(--muted); }
+.journey-gallery > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.journey-gallery-photo { position: relative; aspect-ratio: 1.25; overflow: hidden; border: 3px solid var(--photo-frame); border-radius: 12px; background: #edf5fc; padding: 0; }
+.journey-gallery-photo img { object-fit: cover; }
+.journey-gallery-photo > span { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 10px 10px; background: linear-gradient(transparent, #071d46c7); color: #fff; display: flex; align-items: center; justify-content: space-between; font-size: 11px; text-align: left; }
+.journey-gallery-photo .icon { width: 15px; height: 15px; }
+.travel-dialog.photo-dialog { max-width: 1000px; }
+.photo-dialog-image { position: relative; width: 100%; aspect-ratio: 1.5; }
+.photo-dialog-image img { object-fit: contain; }
+.photo-dialog > p { padding: 14px 24px 20px; color: var(--primary-dark); font-size: 14px; }
+
+@media (max-width: 1250px) {
+  body .navigation { gap: 18px; margin-left: 0; }
+  .hero .hero-content { padding-left: 8%; padding-right: 8%; }
+}
+@media (max-width: 1050px) {
+  body .navigation { gap: 15px; }
+  .hero .hero-content { padding-top: 60px; }
+  .hero .hero-content h1 { font-size: 67px; }
+  .hero .hero-description { font-size: 15px; }
+  .agency-footer-main { gap: 35px; }
+}
+@media (max-width: 850px) {
+  body .navigation.is-open { background: #fff; gap: 2px; }
+  .contact-strip > div { padding-left: 5%; padding-right: 5%; }
+  .contact-strip > div > span { display: none; }
+  .contact-strip a { width: 100%; justify-content: space-between; }
+  .booking-steps-grid { gap: 14px; }
+  .booking-steps-grid article { padding: 20px; }
+  .agency-footer-main { grid-template-columns: 1fr 1fr; }
+  .agency-footer-main > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  body .booking-wrap { padding-top: 54px; }
+  body .booking-tabs { top: -32px; }
+  body .booking-tabs button { flex-direction: column; gap: 5px; padding: 9px 2px; font-size: 10px; min-width: 0; }
+  body .logo-art { width: 45px; height: 48px; }
+  body .logo-word > small { font-size: 5px; letter-spacing: 1px; }
+  .contact-strip { font-size: 10px; }
+  .contact-strip > div { padding-top: 8px; padding-bottom: 8px; }
+  .contact-strip a { gap: 7px; }
+  .contact-strip a .icon { display: none; }
+  .hero .hero-backdrop { background-position: 60% center; }
+  .hero .hero-content { padding: 58px 6% 110px; }
+  .hero .hero-content h1 { font-size: clamp(40px, 11vw, 62px); letter-spacing: -1px; }
+  .hero .hero-description { font-size: 13px; line-height: 1.9; }
+  .hero .hero-actions .button { padding: 13px 16px; font-size: 11px; min-height: 44px; }
+  .hero-actions { gap: 10px; }
+  .journey-highlights { justify-content: flex-start; padding-top: 25px; padding-bottom: 25px; gap: 16px; }
+  .journey-highlights > span { font-size: 11px; }
+  body .section-title h2 { font-size: 36px; }
+  body .services, body .transfer-section { padding-top: 44px; padding-bottom: 44px; }
+  body .service-copy { padding: 32px 14px 20px; }
+  body .service-copy h3 { font-size: 20px; }
+  body .service-copy > p, body .text-link { font-size: 11px; }
+  body .transfer-card h3 { font-size: 26px; }
+  .booking-steps { padding-top: 44px; padding-bottom: 44px; }
+  .booking-steps-grid { grid-template-columns: 1fr; }
+  .booking-steps-grid article { padding: 24px; }
+  .booking-steps-grid article > span { margin-bottom: 15px; }
+  .agency-footer-main { grid-template-columns: 1fr; gap: 28px; padding-top: 38px; padding-bottom: 32px; }
+  .agency-footer-bottom { flex-direction: column; gap: 10px; }
+  .journey-gallery > p { flex-direction: column; gap: 5px; }
+  .journey-gallery > div { gap: 7px; }
+  .journey-gallery-photo { border-radius: 8px; aspect-ratio: .9; }
+  .journey-gallery-photo > span { font-size: 9px; padding: 20px 6px 7px; }
+  .journey-gallery-photo .icon { display: none; }
+}
+@media (max-width: 380px) {
+  body .header-book { display: none; }
+}
